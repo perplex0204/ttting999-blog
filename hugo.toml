@@ -50,10 +50,10 @@ enableRobotsTXT = true
 
 [params]
   # URL for the avatar on homepage
-  avatarURL = ""
+  avatarURL = "/images/tuanZmi.jpg"
 
   # Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
-  avatarSize = ""
+  avatarSize = "size-m"
 
   # Description to display on homepage
   description = "Sky above, sand below & peace within"
@@ -69,7 +69,7 @@ enableRobotsTXT = true
   customHeadHTML = ""
 
   # Keywords relevant for SEO
-  metaKeywords = ["blog", "gokarna", "hugo"]
+  metaKeywords = ["張碩庭", "perplex0204", "ttting999", "coding"]
 
   # If you want to display posts on the homepage, the options are
   # "popular" (order posts by weight), "recent" (order posts by date)
@@ -84,4 +84,5 @@ enableRobotsTXT = true
         {name = "twitter", url = "https://example.com"},
         {name = "linkedin", url = "https://example.com"},
         {name = "stackoverflow", url = "https://example.com"},
+        {name = "github", url = "https://example.com"},
     ]
