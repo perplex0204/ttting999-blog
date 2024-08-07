@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on My New Hugo Site</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://localhost:1313/ttting999-blog/posts/</link>
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ttting999-blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Hugo與Github Pages部屬個人網站</title>
-      <link>http://localhost:1313/posts/hugo_with_githubpage/</link>
+      <link>http://localhost:1313/ttting999-blog/posts/hugo_with_githubpage/</link>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hugo_with_githubpage/</guid>
+      <guid>http://localhost:1313/ttting999-blog/posts/hugo_with_githubpage/</guid>
       <description>Hello World! This is my blog. </description>
     </item>
     <item>
       <title>Hello, world!</title>
-      <link>http://localhost:1313/posts/first_post/</link>
+      <link>http://localhost:1313/ttting999-blog/posts/first_post/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/first_post/</guid>
+      <guid>http://localhost:1313/ttting999-blog/posts/first_post/</guid>
       <description>Hello World! This is my blog.</description>
     </item>
   </channel>
