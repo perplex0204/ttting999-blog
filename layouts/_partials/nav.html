@@ -1,9 +1,0 @@
-<div class="nav-drop">
-  <div class="nav-body">
-    {{- range site.Data.menu }}
-      <a href="{{ absURL .url }}" class="nav_item">{{ .item }}</a>
-    {{- end }}
-    <div class="nav-close"></div>
-  </div>
-</div>
-{{- partialCached "header" . }}

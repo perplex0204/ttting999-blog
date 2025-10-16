@@ -1,5 +1,0 @@
-<footer class="footer wrap pale">
-</footer>
-{{ $scriptPath := "js/index.js" }}
-{{ $scripts := resources.Get $scriptPath | resources.ExecuteAsTemplate $scriptPath . | resources.Minify | resources.Fingerprint "sha512" }}
-<script src="{{ $scripts.Permalink }}"></script>
