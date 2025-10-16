@@ -6,6 +6,7 @@ theme = 'newsroom'
 [params]
   author = "Your Name"
   description = "My personal blog"
+  version = "1.0.0"
 
 [caches]
   [caches.images]
