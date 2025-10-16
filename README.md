@@ -210,7 +210,18 @@ hugo version
 
 ## 授權
 
-本專案使用的 Newsroom 主題遵循其原始授權條款。
+本專案內容採用 MIT License 授權。
+
+### 第三方授權
+
+本專案使用的 [Newsroom](https://github.com/onweru/newsroom) 主題採用 MIT License 授權。
+
+```
+The MIT License (MIT)
+Copyright (c) 2014 Steve Francia
+
+主題原始授權檔案位於：themes/newsroom/LICENSE
+```
 
 ## 相關連結
 
