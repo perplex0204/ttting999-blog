@@ -170,16 +170,16 @@ Language: English(Professional Working Proficiency, TOEIC: 825), Mandarin(Native
 - [ ] 8.8 配置 preconnect 和 dns-prefetch
 - [ ] 8.9 实现代码分割和懒加载
 
-## 阶段 9：部署与 CI/CD
+## 阶段 9：部署与 CI/CD ✅
 
-- [ ] 9.1 创建 Vercel 账户（如未有）
-- [ ] 9.2 连接 GitHub 仓库到 Vercel
-- [ ] 9.3 配置 Vercel 项目设置
-- [ ] 9.4 配置环境变量（.env）
-- [ ] 9.5 测试首次部署
+- [x] 9.1 创建 Vercel 账户（如未有）
+- [x] 9.2 连接 GitHub 仓库到 Vercel
+- [x] 9.3 配置 Vercel 项目设置
+- [x] 9.4 配置环境变量（.env）
+- [x] 9.5 测试首次部署 - https://ttting999-blog.vercel.app/
 - [ ] 9.6 配置自定义域名（可选）
-- [ ] 9.7 设置自动部署（push to main 触发）
-- [ ] 9.8 配置预览部署（PR 预览）
+- [x] 9.7 设置自动部署（push to main 触发）
+- [x] 9.8 配置预览部署（PR 预览）
 
 ## 阶段 10：测试与质量保证
 
