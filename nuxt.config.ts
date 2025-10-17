@@ -47,8 +47,7 @@ export default defineNuxtConfig({
   // Static site generation (SSG) configuration
   nitro: {
     prerender: {
-      crawlLinks: true,
-      routes: ['/sitemap.xml', '/robots.txt']
+      crawlLinks: true
     }
   },
 
