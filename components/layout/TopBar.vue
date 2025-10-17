@@ -94,7 +94,6 @@ const colorMode = useColorMode()
 
 // Navigation links
 const navLinks = [
-  { path: '/', label: '首頁' },
   { path: '/resume', label: '履歷' },
   { path: '/projects', label: '參與計畫' },
   { path: '/blog', label: '技術文章' }

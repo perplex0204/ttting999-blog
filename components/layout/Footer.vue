@@ -88,7 +88,7 @@
 const currentYear = new Date().getFullYear()
 
 // Social links - 使用佔位符，後續可以替換為實際連結
-const email = '[your.email@example.com]'
-const linkedIn = 'https://www.linkedin.com/in/[your-profile]'
-const github = 'https://github.com/[your-username]'
+const email = 'tttingzhang999@gmail.com'
+const linkedIn = 'https://www.linkedin.com/in/tingzhang98/'
+const github = 'https://github.com/perplex0204'
 </script>

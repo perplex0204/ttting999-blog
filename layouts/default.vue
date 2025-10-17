@@ -7,7 +7,7 @@
     <LayoutSidebar />
 
     <!-- Main Content Area -->
-    <main class="pt-16">
+    <main class="pt-16 min-h-[calc(100vh-4rem)]">
       <slot />
     </main>
 
