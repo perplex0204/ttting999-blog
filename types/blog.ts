@@ -1,5 +1,5 @@
 export interface BlogPost {
-  _path: string
+  path: string
   title: string
   description: string
   date: string
@@ -9,7 +9,7 @@ export interface BlogPost {
   image?: string
   draft?: boolean
   body?: any
-  _id?: string
+  id?: string
 }
 
 export interface BlogCategory {

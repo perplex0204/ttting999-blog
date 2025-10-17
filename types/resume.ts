@@ -8,26 +8,22 @@ export interface WorkExperience {
   technologies?: string[]
 }
 
-export interface Education {
-  degree: string
-  school: string
-  period: string
-  startDate: string
-  endDate: string
-  gpa?: string
-  thesis?: string
-  description?: string
-}
-
 export interface TechnicalSkill {
   category: string
   skills: string[]
 }
 
-export interface Language {
-  name: string
-  proficiency: string
-  score?: string
+export interface SideProject {
+  title: string
+  description: string
+  period: string
+  startDate: string
+  endDate: string | 'present'
+  highlights: string[]
+  technologies?: string[]
+  github?: string
+  demo?: string
+  image?: string
 }
 
 export interface Resume {
@@ -41,9 +37,8 @@ export interface Resume {
     motto?: string
   }
   workExperience: WorkExperience[]
-  education: Education[]
+  sideProjects: SideProject[]
   technicalSkills: TechnicalSkill[]
-  languages: Language[]
   socialLinks?: {
     github?: string
     linkedin?: string

@@ -47,27 +47,24 @@
 
           <!-- CTA Buttons -->
           <div
-            class="flex flex-wrap justify-center gap-4"
+            class="flex justify-center items-center gap-6 mb-12"
             v-motion
             :initial="{ opacity: 0, y: 20 }"
-            :enter="{ opacity: 1, y: 0, transition: { delay: 800, duration: 600 } }"
+            :visible-once="{ opacity: 1, y: 0, transition: { delay: 200, duration: 600 } }"
           >
-            <NuxtLink
-              to="/resume"
-              class="group px-8 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <span class="flex items-center gap-2">
-                View Resume
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                </svg>
-              </span>
-            </NuxtLink>
             <a
-              href="#contact"
-              class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 rounded-lg font-semibold shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+              v-for="(social, index) in socialLinks"
+              :key="index"
+              :href="social.url"
+              :target="social.external ? '_blank' : undefined"
+              :rel="social.external ? 'noopener noreferrer' : undefined"
+              :aria-label="social.name"
+              class="group w-14 h-14 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-200 dark:border-gray-700"
             >
-              Get In Touch
+              <component
+                :is="social.icon"
+                class="w-6 h-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+              />
             </a>
           </div>
         </div>
@@ -217,65 +214,6 @@
                 </div>
               </div>
             </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 20 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-          >
-            <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Let's Connect
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
-              Feel free to reach out for collaborations, opportunities, or just a friendly chat!
-            </p>
-          </div>
-
-          <!-- Social Links -->
-          <div
-            class="flex justify-center items-center gap-6 mb-12"
-            v-motion
-            :initial="{ opacity: 0, y: 20 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { delay: 200, duration: 600 } }"
-          >
-            <a
-              v-for="(social, index) in socialLinks"
-              :key="index"
-              :href="social.url"
-              :target="social.external ? '_blank' : undefined"
-              :rel="social.external ? 'noopener noreferrer' : undefined"
-              :aria-label="social.name"
-              class="group w-14 h-14 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-200 dark:border-gray-700"
-            >
-              <component
-                :is="social.icon"
-                class="w-6 h-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
-              />
-            </a>
-          </div>
-
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.9 }"
-            :visible-once="{ opacity: 1, scale: 1, transition: { delay: 400, duration: 600 } }"
-          >
-            <a
-              :href="`mailto:${email}`"
-              class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              Send me an email
-            </a>
           </div>
         </div>
       </div>
@@ -434,7 +372,7 @@ const GitlabIcon = h('svg', {
 const navigationCards = [
   {
     title: 'Resume',
-    description: 'View my professional experience, education, and technical skills',
+    description: 'View my professional experience, and technical skills',
     link: '/resume',
     icon: ResumeIcon,
     iconBg: 'bg-gradient-to-br from-blue-500 to-blue-600'
@@ -447,8 +385,8 @@ const navigationCards = [
     iconBg: 'bg-gradient-to-br from-purple-500 to-purple-600'
   },
   {
-    title: 'Blog',
-    description: 'Read my technical articles and insights on software engineering',
+    title: 'Articles',
+    description: 'Read my articles on technology, insights, and life experiences',
     link: '/blog',
     icon: BlogIcon,
     iconBg: 'bg-gradient-to-br from-pink-500 to-pink-600'

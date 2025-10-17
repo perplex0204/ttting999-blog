@@ -25,7 +25,8 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 │   ├── index.vue       # Homepage (✅ complete with animations)
 │   ├── resume.vue      # Resume page (placeholder)
 │   ├── blog/
-│   │   └── index.vue   # Technical articles list (placeholder)
+│   │   ├── index.vue   # Blog list with filtering (✅ implemented)
+│   │   └── [slug].vue  # Individual article page (✅ implemented)
 │   └── projects/
 │       └── index.vue   # Project list (placeholder)
 ├── content/            # Markdown content (Nuxt Content)
@@ -67,8 +68,14 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 4. **📋 Projects System** (Phase 4 - Planned):
    - Markdown-based project articles with filtering by tech stack
 
-5. **📋 Blog System** (Phase 5 - Planned):
-   - Technical articles with tags, categories, code highlighting
+5. **✅ Blog System** (Phase 5 - Complete):
+   - Blog list page with category and tag filtering (`pages/blog/index.vue`)
+   - Individual article pages with TOC and related articles (`pages/blog/[slug].vue`)
+   - Article card component with image, metadata, and tags (`components/ArticleCard.vue`)
+   - Nuxt Content v3 collection configuration with Zod schema validation
+   - 3 sample articles with full content
+   - SEO optimization with structured data
+   - Markdown rendering with `<ContentRenderer>`
 
 ## Development Commands
 
@@ -79,7 +86,8 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 npm install
 
 # Start dev server with HMR at http://localhost:3000
-npm run dev
+# do not `npm run dev` if the prompt does not ask you to do so
+npm run dev 
 
 # Build for production (standard build)
 npm run build
@@ -126,6 +134,76 @@ Nuxt Content v3 uses collection-based architecture with Zod schemas:
 - **Blog Collection**: Validates title, description, date, tags, category, author, image, draft status
 - **Projects Collection**: Validates title, description, date, tags, github, demo, image, featured status
 - Collections use `type: 'page'` for full-page markdown content
+
+### Nuxt Content v3 API
+
+**CRITICAL**: This project uses **Nuxt Content v3** (`@nuxt/content: ^3.7.1`), which has **breaking changes** from v2. The old API is completely removed with no backward compatibility.
+
+#### v2 to v3 Migration Reference
+
+| Feature | v2 API (❌ Removed) | v3 API (✅ Use This) |
+|---------|---------------------|----------------------|
+| Query initialization | `queryContent('blog')` | `queryCollection('blog')` |
+| Simple filter | `.where({ field: value })` | `.where('field', '=', value)` |
+| Not equal | `.where({ field: { $ne: value } })` | `.where('field', '!=', value)` |
+| Multiple AND conditions | `.where({ a: 1, b: 2 })` | `.where('a', '=', 1).andWhere('b', '=', 2)` |
+| Sorting | `.sort({ date: -1 })` | `.order('date', 'DESC')` |
+| Get multiple items | `.find()` | `.all()` |
+| Get single item | `.findOne()` | `.first()` |
+| Query by path | `.where({ _path: path })` | `.path(path)` |
+| Path field | `article._path` | `article.path` |
+| ID field | `article._id` | `article.id` |
+
+#### Built-in Fields for `type: 'page'` Collections
+
+Collections with `type: 'page'` automatically include these fields (no need to define in schema):
+- `path` - Generated route path (e.g., `/blog/my-article`)
+- `title` - Page title (can be overridden in schema)
+- `description` - Page description (can be overridden in schema)
+- `seo` - SEO metadata for `useSeoMeta()`
+- `body` - Parsed content as AST (for `<ContentRenderer>`)
+- `navigation` - Page navigation configuration
+
+#### SQL-based Operators
+
+v3 uses SQL-style operators in `.where()` clauses:
+- `=` - Equal
+- `!=` or `<>` - Not equal
+- `>` - Greater than
+- `<` - Less than
+- `>=` - Greater than or equal
+- `<=` - Less than or equal
+- `LIKE` - Pattern matching (e.g., `.where('path', 'LIKE', '/blog%')`)
+- `IN` - Value in list (e.g., `.where('category', 'IN', ['tech', 'blog'])`)
+
+#### Example Usage
+
+```typescript
+// Fetch all non-draft blog posts, sorted by date
+const { data: articles } = await useAsyncData('blog-articles', () =>
+  queryCollection('blog')
+    .where('draft', '!=', true)
+    .order('date', 'DESC')
+    .all()
+)
+
+// Fetch a single article by path
+const { data: article } = await useAsyncData(`blog-${slug}`, () =>
+  queryCollection('blog')
+    .path(`/blog/${slug}`)
+    .first()
+)
+
+// Complex query with multiple conditions
+const { data: featured } = await useAsyncData('featured-posts', () =>
+  queryCollection('blog')
+    .where('featured', '=', true)
+    .andWhere('draft', '!=', true)
+    .order('date', 'DESC')
+    .limit(3)
+    .all()
+)
+```
 
 ### tailwind.config.ts
 
@@ -261,12 +339,17 @@ This project follows a phased development approach documented in TODO.md:
   - Schema.org Person structured data for SEO
 - **Phase 3** 🚧: Resume page with work experience timeline (NEXT)
 - **Phase 4**: Projects system with markdown rendering
-- **Phase 5**: Blog system with categorization and tags
+- **Phase 5** ✅: Blog system with categorization and tags (COMPLETED)
+  - Blog list page with filtering
+  - Individual article pages with TOC
+  - Article card components
+  - Nuxt Content v3 integration
+  - 3 sample technical articles
 - **Phase 6-8**: UI/UX polish, content migration, SEO
 - **Phase 9** ✅: Deployment (COMPLETED - Vercel deployed at https://ttting999-blog.vercel.app/)
 - **Phase 10-11**: Testing, quality assurance, advanced features
 
-**Current Phase**: Phase 3 (Resume Page Design)
+**Current Phase**: Phase 3 (Resume Page Design) or Phase 4 (Projects System)
 
 Refer to TODO.md for detailed task breakdown. Always update TODO.md checkboxes as tasks are completed.
 
@@ -321,7 +404,6 @@ If build fails with missing module errors, install these explicitly.
 - Nitro build errors after file structure changes: Clear cache and rebuild:
   ```bash
   rm -rf .nuxt .output
-  npm run dev
   ```
 
 ### Layout Not Appearing
@@ -332,9 +414,128 @@ If build fails with missing module errors, install these explicitly.
 3. Page components don't override background colors conflicting with layout
 4. Clear Nuxt cache: `rm -rf .nuxt`
 
+### Nuxt Content v3: Content Not Displaying / `undefined` Errors
+
+**Problem**: Articles show as empty, "No articles found", or navigation fails with `/blog/undefined` errors.
+
+**Root Cause**: Using deprecated v2 API (`queryContent`, `_path` field) with Nuxt Content v3.
+
+**Symptoms**:
+- Empty article list on `/blog` page
+- Browser console shows `queryContent is not defined`
+- Article links show `/blog/undefined()` or cause navigation errors
+- `article._path` returns `undefined`
+
+**Solution Checklist**:
+
+1. **Replace v2 query API with v3**:
+   ```typescript
+   // ❌ Wrong (v2 API - removed in v3)
+   const { data } = await useAsyncData('blog', () =>
+     queryContent('blog')
+       .where({ draft: { $ne: true } })
+       .sort({ date: -1 })
+       .find()
+   )
+
+   // ✅ Correct (v3 API)
+   const { data } = await useAsyncData('blog', () =>
+     queryCollection('blog')
+       .where('draft', '!=', true)
+       .order('date', 'DESC')
+       .all()
+   )
+   ```
+
+2. **Update field names** (remove underscore prefix):
+   ```typescript
+   // ❌ Wrong (v2 field names)
+   :to="`/blog/${article._path}`"
+   :key="article._id"
+
+   // ✅ Correct (v3 field names)
+   :to="`/blog/${article.path}`"
+   :key="article.id"
+   ```
+
+3. **Update TypeScript interfaces**:
+   ```typescript
+   // ❌ Wrong
+   interface Article {
+     _path: string
+     _id: string
+   }
+
+   // ✅ Correct
+   interface Article {
+     path: string
+     id: string
+   }
+   ```
+
+4. **Verify collection configuration** in `content.config.ts`:
+   ```typescript
+   export default defineContentConfig({
+     collections: {
+       blog: defineCollection({
+         type: 'page',
+         source: 'blog/**/*.md',
+         schema: z.object({
+           // Define custom fields only
+           // Built-in fields (path, title, description, body) are auto-generated
+           date: z.string(),
+           tags: z.array(z.string()),
+           // ...
+         })
+       })
+     }
+   })
+   ```
+
+5. **Check dev server output** for successful content processing:
+   ```
+   [@nuxt/content] ✔ Processed 2 collections and 3 files in 251ms
+   ```
+
+**Files to Check**:
+- `pages/blog/index.vue` - Article list query
+- `pages/blog/[slug].vue` - Single article query
+- `components/ArticleCard.vue` - Path field usage in template
+- `types/blog.ts` or `types/project.ts` - TypeScript interfaces
+
+**Quick Test**:
+```typescript
+// In browser console on /blog page
+console.log(articles.value)
+// Should show array with 'path' field (not '_path')
+```
+
+### Nuxt Content v3: Collection Not Found Errors
+
+**Problem**: `Error: No collection found for 'blog'` or similar errors.
+
+**Solution**:
+1. Verify `content.config.ts` exists in project root
+2. Ensure collection name matches exactly (case-sensitive):
+   ```typescript
+   // content.config.ts
+   collections: {
+     blog: defineCollection({ ... })  // Collection name is 'blog'
+   }
+
+   // pages/blog/index.vue
+   queryCollection('blog')  // Must match exactly
+   ```
+3. Restart dev server after modifying `content.config.ts`
+4. Check that markdown files exist in the correct source directory:
+   ```typescript
+   source: 'blog/**/*.md'  // Files must be in content/blog/
+   ```
+
 ## References
 
 - Detailed implementation guide: `NUXT3_MIGRATION_GUIDE.md`
 - Task breakdown and progress: `TODO.md`
 - Official docs: https://nuxt.com/docs
 - Nuxt Content v3: https://content.nuxt.com
+

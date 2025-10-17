@@ -15,20 +15,22 @@ export default defineContentConfig({
         image: z.string().optional(),
         draft: z.boolean().default(false)
       })
-    }),
-    projects: defineCollection({
-      type: 'page',
-      source: 'projects/**/*.md',
-      schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        date: z.string(),
-        tags: z.array(z.string()),
-        github: z.string().optional(),
-        demo: z.string().optional(),
-        image: z.string().optional(),
-        featured: z.boolean().default(false)
-      })
     })
+    // Projects now managed via data/projects.ts instead of Nuxt Content
+    // projects: defineCollection({
+    //   type: 'page',
+    //   source: 'projects/*.md',
+    //   schema: z.object({
+    //     title: z.string(),
+    //     description: z.string(),
+    //     date: z.string(),
+    //     tags: z.array(z.string()),
+    //     github: z.string().optional(),
+    //     demo: z.string().optional(),
+    //     image: z.string().optional(),
+    //     featured: z.boolean().default(false),
+    //     draft: z.boolean().default(false)
+    //   })
+    // })
   }
 })

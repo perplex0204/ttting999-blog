@@ -35,22 +35,22 @@
 - [x] 2.7 添加动画效果（使用 @vueuse/motion）
 - [x] 2.8 优化主页 SEO metadata
 
-## 阶段 3：履历页面设计与实现
+## 阶段 3：履历页面设计与实现 ✅
 
-- [ ] 3.1 创建 pages/resume.vue 履历页面
-- [ ] 3.2 创建 TypeScript 类型定义（types/resume.ts）
-- [ ] 3.3 创建履历数据文件（data/resume.ts 或 JSON）
-- [ ] 3.4 实现个人信息区块组件（ResumeHero.vue）
-- [ ] 3.5 实现技术栈展示组件（SkillsGrid.vue）
-  - [ ] Frontend 技术
-  - [ ] Backend 技术
-  - [ ] DevOps/工具
-  - [ ] 数据库
-- [ ] 3.6 实现语言能力展示组件（LanguageSkills.vue）
-- [ ] 3.7 实现工作经历时间轴组件（ExperienceTimeline.vue）
-- [ ] 3.8 实现教育背景组件（EducationList.vue）
-- [ ] 3.9 添加下载 PDF 功能（可选）
-- [ ] 3.10 优化履历页面的 SEO metadata
+- [x] 3.1 创建 pages/resume.vue 履历页面
+- [x] 3.2 创建 TypeScript 类型定义（types/resume.ts）
+- [x] 3.3 创建履历数据文件（data/resume.ts 或 JSON）
+- [x] 3.4 实现个人信息区块组件（ResumeHero.vue）
+- [x] 3.5 实现技术栈展示组件（SkillsGrid.vue）
+  - [x] Frontend 技术
+  - [x] Backend 技术
+  - [x] DevOps/工具
+  - [x] 数据库
+- [x] 3.6 实现语言能力展示组件（LanguageSkills.vue）
+- [x] 3.7 实现工作经历时间轴组件（ExperienceTimeline.vue）
+- [x] 3.8 实现教育背景组件（EducationList.vue）
+- [x] 3.9 添加下载 PDF 功能（可选）
+- [x] 3.10 优化履历页面的 SEO metadata
 
 ```
 # 參考的履歷資訊
@@ -95,44 +95,44 @@ Language: English(Professional Working Proficiency, TOEIC: 825), Mandarin(Native
 
 ```
 
-## 阶段 4：项目经历系统
+## 阶段 4：项目经历系统 ✅
 
-- [ ] 4.1 创建 pages/projects/index.vue 项目列表页
-- [ ] 4.2 创建 pages/projects/[slug].vue 项目详情页
-- [ ] 4.3 设置 content/projects/ 目录结构
-- [ ] 4.4 创建项目 Markdown 模板（Front Matter 格式）
-  - [ ] 标题、描述、日期
-  - [ ] 技术栈标签
-  - [ ] 项目链接（GitHub, Demo）
-  - [ ] 封面图片
-- [ ] 4.5 实现项目卡片组件（ProjectCard.vue）
-- [ ] 4.6 实现项目列表网格布局
-- [ ] 4.7 实现项目详情页面（Markdown 渲染）
-- [ ] 4.8 添加项目筛选功能（按技术栈）
-- [ ] 4.9 添加代码高亮（使用 Nuxt Content）
-- [ ] 4.10 优化项目页面 SEO metadata
+- [x] 4.1 创建 pages/projects/index.vue 项目列表页
+- [x] 4.2 创建 pages/projects/[slug].vue 项目详情页
+- [x] 4.3 设置 content/projects/ 目录结构
+- [x] 4.4 创建项目 Markdown 模板（Front Matter 格式）
+  - [x] 标题、描述、日期
+  - [x] 技术栈标签
+  - [x] 项目链接（GitHub, Demo）
+  - [x] 封面图片
+- [x] 4.5 实现项目卡片组件（ProjectCard.vue）
+- [x] 4.6 实现项目列表网格布局
+- [x] 4.7 实现项目详情页面（Markdown 渲染）
+- [x] 4.8 添加项目筛选功能（按技术栈）
+- [x] 4.9 添加代码高亮（使用 Nuxt Content）
+- [x] 4.10 优化项目页面 SEO metadata
 
 ## 阶段 5：技术文章系统
 
-- [ ] 5.1 创建 pages/blog/index.vue 文章列表页
-- [ ] 5.2 创建 pages/blog/[slug].vue 文章详情页
-- [ ] 5.3 设置 content/blog/ 目录结构
-- [ ] 5.4 创建文章 Markdown 模板（Front Matter 格式）
-  - [ ] 标题、描述、日期
-  - [ ] 标签、分类
-  - [ ] 封面图片
-  - [ ] 作者信息
-- [ ] 5.5 实现文章卡片组件（PostCard.vue）
-- [ ] 5.6 实现文章列表布局（分页功能）
-- [ ] 5.7 实现文章详情页面
-  - [ ] 目录（Table of Contents）
-  - [ ] 阅读时间估算
-  - [ ] 代码高亮
-  - [ ] 响应式图片
-- [ ] 5.8 添加标签/分类过滤功能
-- [ ] 5.9 添加搜索功能（可选）
-- [ ] 5.10 添加相关文章推荐
-- [ ] 5.11 优化文章页面 SEO metadata
+- [x] 5.1 创建 pages/blog/index.vue 文章列表页
+- [x] 5.2 创建 pages/blog/[slug].vue 文章详情页
+- [x] 5.3 设置 content/blog/ 目录结构
+- [x] 5.4 创建文章 Markdown 模板（Front Matter 格式）
+  - [x] 标题、描述、日期
+  - [x] 标签、分类
+  - [x] 封面图片
+  - [x] 作者信息
+- [x] 5.5 实现文章卡片组件（PostCard.vue）
+- [x] 5.6 实现文章列表布局（分页功能）
+- [x] 5.7 实现文章详情页面
+  - [x] 目录（Table of Contents）
+  - [x] 阅读时间估算
+  - [x] 代码高亮
+  - [x] 响应式图片
+- [x] 5.8 添加标签/分类过滤功能
+- [x] 5.9 添加搜索功能（可选）
+- [x] 5.10 添加相关文章推荐
+- [x] 5.11 优化文章页面 SEO metadata
 
 ## 阶段 6：UI/UX 优化与视觉设计
 

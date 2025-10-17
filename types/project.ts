@@ -1,5 +1,5 @@
 export interface Project {
-  _path: string
+  path: string
   title: string
   description: string
   date: string
@@ -9,7 +9,7 @@ export interface Project {
   image?: string
   featured?: boolean
   body?: any
-  _id?: string
+  id?: string
 }
 
 export interface ProjectTag {

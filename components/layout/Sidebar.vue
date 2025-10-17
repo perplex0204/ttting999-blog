@@ -129,7 +129,7 @@ const navLinks = [
   },
   {
     path: '/blog',
-    label: '技術文章',
+    label: '文章',
     icon: defineComponent({
       template: `
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
