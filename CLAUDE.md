@@ -8,7 +8,7 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 
 **Previous State**: This repository previously contained a Hugo static site. All Hugo files have been removed as part of migration to Nuxt 3.
 
-**Current State**: Phase 0 (Project Initialization) and Phase 1 (Core Layout & Navigation) completed. Successfully deployed to Vercel at https://ttting999-blog.vercel.app/. Ready for Phase 2 (Homepage Design).
+**Current State**: Phase 0 (Project Initialization), Phase 1 (Core Layout & Navigation), and Phase 2 (Homepage Design) completed. Successfully deployed to Vercel at https://ttting999-blog.vercel.app/. Ready for Phase 3 (Resume Page).
 
 ## Architecture
 
@@ -22,7 +22,7 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 ├── components/          # Auto-imported Vue components
 │   └── layout/         # TopBar.vue, Footer.vue, Sidebar.vue (✅ implemented)
 ├── pages/              # File-based routing
-│   ├── index.vue       # Homepage (basic version complete)
+│   ├── index.vue       # Homepage (✅ complete with animations)
 │   ├── resume.vue      # Resume page (placeholder)
 │   ├── blog/
 │   │   └── index.vue   # Technical articles list (placeholder)
@@ -51,9 +51,14 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
    - **Responsive Design**: Desktop menu in TopBar, mobile hamburger menu triggers Sidebar
    - **Theme Toggle**: Integrated `@nuxtjs/color-mode` with system preference detection
 
-2. **🚧 Homepage** (Phase 2 - Pending):
-   - Basic hero section with name and title
-   - Needs: Personal photo, motto, quick navigation cards, animations
+2. **✅ Homepage** (Phase 2 Complete):
+   - Hero Section with gradient avatar, animated name reveal, CTA buttons
+   - Motto/Quote section with bilingual display (Chinese + English)
+   - About Me section with personal bio and tech stack cards
+   - Quick navigation cards (Resume, Projects, Blog) with gradient overlays
+   - Contact section with social links (Email, LinkedIn, GitHub)
+   - Full @vueuse/motion animations (scroll-triggered, staggered reveals)
+   - SEO optimized with Schema.org Person structured data
 
 3. **🚧 Resume Page** (Phase 3 - Pending):
    - TypeScript types defined in `types/resume.ts`
@@ -108,7 +113,7 @@ npm run generate
 ### nuxt.config.ts
 
 Core configuration includes:
-- **Modules**: `@nuxt/content` (v3), `@nuxt/image`, `@nuxtjs/tailwindcss`, `@nuxtjs/color-mode`
+- **Modules**: `@nuxt/content` (v3), `@nuxt/image`, `@nuxtjs/tailwindcss`, `@nuxtjs/color-mode`, `@vueuse/motion/nuxt`
 - **TypeScript**: Strict mode enabled, typeCheck disabled for faster builds (run separately if needed)
 - **Nitro Prerender**: Configured to crawl links and prerender sitemap/robots.txt
 - **Color Mode**: System preference detection with 'light' fallback, no class suffix
@@ -246,15 +251,22 @@ This project follows a phased development approach documented in TODO.md:
   - `components/layout/Footer.vue` - social links and info
   - `composables/useSidebarState.ts` - sidebar state management
   - Placeholder pages created: resume.vue, blog/index.vue, projects/index.vue
-- **Phase 2** 🚧: Homepage design (NEXT)
-- **Phase 3**: Resume page with work experience timeline
+- **Phase 2** ✅: Homepage design (COMPLETED)
+  - Hero section with gradient avatar and animated name
+  - Motto section with bilingual quote
+  - About Me section with bio and tech stack grid
+  - Quick navigation cards with gradient overlays
+  - Contact section with social links
+  - @vueuse/motion animations (scroll-triggered, staggered)
+  - Schema.org Person structured data for SEO
+- **Phase 3** 🚧: Resume page with work experience timeline (NEXT)
 - **Phase 4**: Projects system with markdown rendering
 - **Phase 5**: Blog system with categorization and tags
 - **Phase 6-8**: UI/UX polish, content migration, SEO
 - **Phase 9** ✅: Deployment (COMPLETED - Vercel deployed at https://ttting999-blog.vercel.app/)
 - **Phase 10-11**: Testing, quality assurance, advanced features
 
-**Current Phase**: Phase 2 (Homepage Design)
+**Current Phase**: Phase 3 (Resume Page Design)
 
 Refer to TODO.md for detailed task breakdown. Always update TODO.md checkboxes as tasks are completed.
 

@@ -24,16 +24,16 @@
 - [x] 1.5 实现深浅模式切换功能（使用 @nuxtjs/color-mode）
 - [x] 1.6 添加响应式设计（手机、平板、桌面）
 
-## 阶段 2：主页设计与实现
+## 阶段 2：主页设计与实现 ✅
 
-- [ ] 2.1 创建 pages/index.vue 主页
-- [ ] 2.2 Hero Section（个人照片、姓名、职位标题）
-- [ ] 2.3 座右铭展示区
-- [ ] 2.4 个人简介区块
-- [ ] 2.5 社交媒体链接（GitHub, LinkedIn, Email 等）
-- [ ] 2.6 快速导航卡片（指向履历、项目、文章的 CTA 按钮）
-- [ ] 2.7 添加动画效果（使用 @vueuse/motion）
-- [ ] 2.8 优化主页 SEO metadata
+- [x] 2.1 创建 pages/index.vue 主页
+- [x] 2.2 Hero Section（个人照片、姓名、职位标题）
+- [x] 2.3 座右铭展示区
+- [x] 2.4 个人简介区块
+- [x] 2.5 社交媒体链接（GitHub, LinkedIn, Email 等）
+- [x] 2.6 快速导航卡片（指向履历、项目、文章的 CTA 按钮）
+- [x] 2.7 添加动画效果（使用 @vueuse/motion）
+- [x] 2.8 优化主页 SEO metadata
 
 ## 阶段 3：履历页面设计与实现
 
