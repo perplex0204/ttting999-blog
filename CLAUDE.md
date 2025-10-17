@@ -8,49 +8,62 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 
 **Previous State**: This repository previously contained a Hugo static site. All Hugo files have been removed as part of migration to Nuxt 3.
 
-**Current State**: Phase 0 (Project Initialization) completed. Ready for Phase 1 (Core Layout & Navigation).
+**Current State**: Phase 0 (Project Initialization) and Phase 1 (Core Layout & Navigation) completed. Successfully deployed to Vercel at https://ttting999-blog.vercel.app/. Ready for Phase 2 (Homepage Design).
 
 ## Architecture
 
 ### Core Structure
 
+**IMPORTANT**: `app.vue` must be in the **root directory**, NOT in an `app/` subdirectory. This is the correct Nuxt 3 structure.
+
 ```
 /
+├── app.vue             # Root component (MUST be in root directory)
 ├── components/          # Auto-imported Vue components
-│   ├── layout/         # Header, Footer, Sidebar, TopBar
-│   ├── blog/           # PostCard, PostList, TableOfContents
-│   ├── resume/         # Timeline, SkillTags, ProjectCard
-│   └── ui/             # Reusable UI components (Button, Card, Badge)
+│   └── layout/         # TopBar.vue, Footer.vue, Sidebar.vue (✅ implemented)
 ├── pages/              # File-based routing
-│   ├── index.vue       # Homepage with hero, motto, navigation
-│   ├── resume.vue      # Full-stack engineer resume
+│   ├── index.vue       # Homepage (basic version complete)
+│   ├── resume.vue      # Resume page (placeholder)
 │   ├── blog/
-│   │   ├── index.vue   # Technical articles list
-│   │   └── [slug].vue  # Article detail page
+│   │   └── index.vue   # Technical articles list (placeholder)
 │   └── projects/
-│       ├── index.vue   # Project list
-│       └── [slug].vue  # Project detail page
+│       └── index.vue   # Project list (placeholder)
 ├── content/            # Markdown content (Nuxt Content)
 │   ├── blog/          # Technical articles (.md)
 │   └── projects/      # Project descriptions (.md)
 ├── layouts/            # Layout templates
-│   └── default.vue    # Main layout with TopBar + Sidebar
+│   └── default.vue    # Main layout with TopBar + Sidebar + Footer (✅ implemented)
 ├── composables/        # Auto-imported Vue composables
+│   └── useSidebarState.ts  # Sidebar state management (✅ implemented)
 ├── types/              # TypeScript type definitions
+│   └── resume.ts      # Resume data types (✅ defined)
 ├── utils/              # Auto-imported utility functions
 └── public/             # Static assets (images, fonts)
 ```
 
-### Key Features
+### Key Features (Implementation Status)
 
-1. **Homepage**: Personal photo, motto, quick navigation links
-2. **Resume Page**: Work experience, skills (frontend/backend/DevOps), languages, education
-3. **Projects System**: Markdown-based project articles with filtering by tech stack
-4. **Blog System**: Technical articles with tags, categories, code highlighting
-5. **Navigation**:
-   - Top Bar: Home link + light/dark mode toggle
-   - Sidebar: Expandable menu with links to all main sections
-6. **Dark Mode**: System preference detection with manual toggle
+1. **✅ Navigation System** (Phase 1 Complete):
+   - **TopBar**: Fixed navigation bar with logo, desktop navigation links (Home, Resume, Projects, Blog), and dark/light mode toggle
+   - **Sidebar**: Mobile-responsive slide-in menu with same navigation links and theme toggle
+   - **Footer**: Social links (Email, LinkedIn, GitHub) and technology stack info
+   - **State Management**: `useSidebarState` composable for managing sidebar open/close state
+   - **Responsive Design**: Desktop menu in TopBar, mobile hamburger menu triggers Sidebar
+   - **Theme Toggle**: Integrated `@nuxtjs/color-mode` with system preference detection
+
+2. **🚧 Homepage** (Phase 2 - Pending):
+   - Basic hero section with name and title
+   - Needs: Personal photo, motto, quick navigation cards, animations
+
+3. **🚧 Resume Page** (Phase 3 - Pending):
+   - TypeScript types defined in `types/resume.ts`
+   - Needs: Component implementation, data file, timeline UI
+
+4. **📋 Projects System** (Phase 4 - Planned):
+   - Markdown-based project articles with filtering by tech stack
+
+5. **📋 Blog System** (Phase 5 - Planned):
+   - Technical articles with tags, categories, code highlighting
 
 ## Development Commands
 
@@ -152,19 +165,48 @@ featured: false                     # Optional (defaults to false)
 
 ## Design System
 
+### Theme: "Digital Artisan's Studio"
+
+The design follows a modern, professional aesthetic inspired by a digital craftsman's workspace.
+
 ### Color Scheme
-- Primary: Blue/Purple gradient (`#667eea`, `#764ba2`)
-- Dark mode colors defined in tailwind.config.ts
-- All components must support both light and dark modes
+- **Primary**: Blue/Purple gradient (`#667eea`, `#764ba2`) - Technology/creativity blend
+- **Background**:
+  - Light: White (`bg-white`)
+  - Dark: Navy/charcoal (`bg-gray-900`)
+- **TopBar/Sidebar**:
+  - Semi-transparent with backdrop blur (`bg-white/80 dark:bg-gray-900/80 backdrop-blur-md`)
+  - Creates depth and modern glass-morphism effect
+- **Accent Colors**: Defined in `tailwind.config.ts` with 50-900 shades
+- All components MUST support both light and dark modes
 
 ### Typography
-- Fonts: Inter (English) + Noto Sans TC (Chinese)
-- Loaded via Google Fonts with preconnect optimization
+- **Primary Font**: Inter (English)
+- **Secondary Font**: Noto Sans TC (Chinese/Traditional)
+- Loaded via Google Fonts with preconnect optimization for performance
+- Logo uses code bracket symbols: `<Ting Zhang/>`
 
 ### Responsive Breakpoints
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
+- **Mobile**: < 768px (md breakpoint)
+  - Hamburger menu triggers Sidebar
+  - Navigation links in mobile Sidebar only
+- **Tablet**: 768px - 1024px
+  - Desktop navigation starts at `md:` breakpoint
+- **Desktop**: > 1024px
+  - Full horizontal navigation in TopBar
+  - Sidebar hidden
+
+### Layout Measurements
+- **TopBar Height**: 64px (`h-16`) - Fixed positioning at top
+- **Content Padding Top**: 64px (`pt-16`) - To accommodate fixed TopBar
+- **Sidebar Width**: 256px (`w-64`) - Mobile slide-in menu
+- **Container Max Width**: Responsive (`container mx-auto`)
+
+### Animations & Transitions
+- **Theme Toggle**: Smooth color transitions (`transition-colors duration-300`)
+- **Sidebar**: Slide-in from right (`transform translateX(100%)`)
+- **Navigation Links**: Underline animation on hover (desktop)
+- **Backdrop**: Semi-transparent overlay when Sidebar is open on mobile
 
 ## Important Conventions
 
@@ -196,14 +238,23 @@ featured: false                     # Optional (defaults to false)
 This project follows a phased development approach documented in TODO.md:
 
 - **Phase 0** ✅: Project initialization and base configuration (COMPLETED)
-- **Phase 1**: Core layout and navigation system
-- **Phase 2**: Homepage design
+- **Phase 1** ✅: Core layout and navigation system (COMPLETED)
+  - `app.vue` in root directory (correct Nuxt 3 structure)
+  - `layouts/default.vue` with TopBar, Sidebar, Footer slots
+  - `components/layout/TopBar.vue` - fixed navigation with theme toggle
+  - `components/layout/Sidebar.vue` - mobile menu with slide animation
+  - `components/layout/Footer.vue` - social links and info
+  - `composables/useSidebarState.ts` - sidebar state management
+  - Placeholder pages created: resume.vue, blog/index.vue, projects/index.vue
+- **Phase 2** 🚧: Homepage design (NEXT)
 - **Phase 3**: Resume page with work experience timeline
 - **Phase 4**: Projects system with markdown rendering
 - **Phase 5**: Blog system with categorization and tags
-- **Phase 6-11**: UI/UX polish, content migration, SEO, deployment, testing
+- **Phase 6-8**: UI/UX polish, content migration, SEO
+- **Phase 9** ✅: Deployment (COMPLETED - Vercel deployed at https://ttting999-blog.vercel.app/)
+- **Phase 10-11**: Testing, quality assurance, advanced features
 
-**Current Phase**: Phase 1 (Core Layout & Navigation System)
+**Current Phase**: Phase 2 (Homepage Design)
 
 Refer to TODO.md for detailed task breakdown. Always update TODO.md checkboxes as tasks are completed.
 
@@ -223,6 +274,51 @@ The project requires these non-optional dependencies:
 - **@tailwindcss/typography**: Required for markdown prose styling
 
 If build fails with missing module errors, install these explicitly.
+
+## Common Issues & Troubleshooting
+
+### White Screen / Content Not Showing
+
+**Problem**: Fixed `TopBar` (height: 64px / 4rem) covers page content.
+
+**Solution**: All page content must account for TopBar height:
+- Use `min-h-[calc(100vh-4rem)]` instead of `min-h-screen` for full-height sections
+- Main layout has `pt-16` (padding-top: 4rem) to push content below TopBar
+- Example from `pages/index.vue`:
+  ```vue
+  <div class="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+  ```
+
+### app.vue Location
+
+**Problem**: Nuxt shows default welcome page instead of custom layout.
+
+**Solution**: `app.vue` MUST be in the **root directory**, not in an `app/` subdirectory. Check:
+```bash
+# Correct location
+/app.vue
+
+# Wrong location (will not work)
+/app/app.vue
+```
+
+### Development Server Issues
+
+**Common errors**:
+- Port conflicts: Dev server will auto-select alternative port (e.g., 3001 if 3000 is taken)
+- Nitro build errors after file structure changes: Clear cache and rebuild:
+  ```bash
+  rm -rf .nuxt .output
+  npm run dev
+  ```
+
+### Layout Not Appearing
+
+**Check**:
+1. `app.vue` exists in root and contains `<NuxtLayout><NuxtPage /></NuxtLayout>`
+2. `layouts/default.vue` exists and is properly structured
+3. Page components don't override background colors conflicting with layout
+4. Clear Nuxt cache: `rm -rf .nuxt`
 
 ## References
 
