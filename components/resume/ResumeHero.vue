@@ -21,7 +21,7 @@
                   <NuxtImg
                     src="/personal_image.jpg"
                     alt="Ting Zhang"
-                    class="w-full h-full rounded-full object-cover object-center"
+                    class="w-full h-full rounded-full object-cover object-top-right"
                     style="object-position: center 100%"
                     loading="eager"
                     width="160"

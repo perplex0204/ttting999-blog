@@ -34,14 +34,6 @@
       </svg>
     </div>
 
-    <!-- Featured Badge -->
-    <div
-      v-if="project.featured"
-      class="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-xs font-semibold"
-    >
-      精選專案
-    </div>
-
     <!-- Project Content -->
     <div class="p-6">
       <!-- Title -->

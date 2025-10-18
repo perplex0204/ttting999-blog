@@ -8,7 +8,7 @@
             © {{ currentYear }} <span class="font-semibold text-gray-900 dark:text-white">Ting Zhang</span>
           </p>
           <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-            Full Stack Engineer | 用心打造每一行程式碼
+            {{ $t('footer.tagline') }}
           </p>
         </div>
 
@@ -90,9 +90,17 @@
 
       <!-- Additional Info (Optional) -->
       <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800 text-center">
-        <p class="text-xs text-gray-500 dark:text-gray-500">
-          Built with <span class="text-primary-600 dark:text-primary-400">Nuxt 3</span> + <span class="text-primary-600 dark:text-primary-400">Tailwind CSS</span> | Deployed on <span class="text-primary-600 dark:text-primary-400">Vercel</span>
-        </p>
+        <i18n-t keypath="footer.tech" tag="p" class="text-xs text-gray-500 dark:text-gray-500">
+          <template #nuxt>
+            <span class="text-primary-600 dark:text-primary-400">Nuxt 3</span>
+          </template>
+          <template #tailwind>
+            <span class="text-primary-600 dark:text-primary-400">Tailwind CSS</span>
+          </template>
+          <template #vercel>
+            <span class="text-primary-600 dark:text-primary-400">Vercel</span>
+          </template>
+        </i18n-t>
       </div>
     </div>
   </footer>

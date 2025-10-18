@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto">
       <!-- Back Button -->
       <NuxtLink
-        to="/blog"
+        :to="localePath('/blog')"
         class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mb-8"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,6 +195,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const slug = route.params.slug as string
+const localePath = useLocalePath()
 
 // Fetch the article by slug
 const { data: article } = await useAsyncData(`blog-${slug}`, () =>

@@ -6,7 +6,6 @@ tags: ['Python', 'FastAPI', 'MongoDB', 'PostgreSQL', 'Kubernetes', 'Docker', 'Re
 github: ''
 demo: 'https://www.spstaiwan.com.tw/%e5%a4%aa%e9%99%bd%e5%85%89%e9%9b%bb%e7%b6%ad%e9%81%8b%e7%9b%a3%e6%8e%a7%e7%b3%bb%e7%b5%b1/'
 image: ''
-featured: true
 ---
 
 ## 專案概述

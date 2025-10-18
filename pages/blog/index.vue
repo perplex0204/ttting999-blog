@@ -4,10 +4,10 @@
       <!-- Page Header -->
       <div class="mb-12">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          文章
+          {{ $t('blog.title') }}
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-400">
-          分享技術心得、生活記錄與個人見解
+          {{ $t('blog.subtitle') }}
         </p>
       </div>
 
@@ -34,7 +34,7 @@
       <!-- Tag Filter (if any tags are selected or available) -->
       <div v-if="allTags.length > 0" class="mb-8">
         <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-          熱門標籤
+          {{ $t('blog.popularTags') }}
         </h3>
         <div class="flex flex-wrap gap-2">
           <button
@@ -55,7 +55,7 @@
 
       <!-- Article Count -->
       <div class="mb-6 text-sm text-gray-600 dark:text-gray-400">
-        共 {{ filteredArticles.length }} 篇文章
+        {{ $t('blog.articleCount', { count: filteredArticles.length }) }}
       </div>
 
       <!-- Articles Grid -->
@@ -98,17 +98,17 @@
           />
         </svg>
         <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          沒有找到文章
+          {{ $t('blog.noPosts') }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400">
-          {{ selectedCategory !== 'all' || selectedTags.length > 0 ? '試試其他篩選條件' : '文章即將推出' }}
+          {{ selectedCategory !== 'all' || selectedTags.length > 0 ? $t('blog.tryOtherFilters') : $t('blog.comingSoon') }}
         </p>
         <button
           v-if="selectedCategory !== 'all' || selectedTags.length > 0"
           @click="resetFilters"
           class="mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
         >
-          清除篩選
+          {{ $t('blog.clearFilters') }}
         </button>
       </div>
     </div>
@@ -116,12 +116,14 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 // SEO Meta tags
 useSeoMeta({
-  title: '文章 - Ting Zhang',
-  description: 'Ting Zhang 的個人文章，分享技術心得、生活記錄與個人見解。',
-  ogTitle: '文章 - Ting Zhang',
-  ogDescription: 'Ting Zhang 的個人文章，分享技術心得、生活記錄與個人見解。',
+  title: t('seo.blog.title'),
+  description: t('seo.blog.description'),
+  ogTitle: t('seo.blog.title'),
+  ogDescription: t('seo.blog.description'),
   ogType: 'website'
 })
 
@@ -149,20 +151,20 @@ const allTags = computed(() => {
 
 // Compute categories with counts
 const categories = computed(() => {
-  if (!articles.value) return [{ label: '全部', value: 'all', count: 0 }]
+  if (!articles.value) return [{ label: t('blog.all'), value: 'all', count: 0 }]
 
   const counts: Record<string, number> = {}
   articles.value.forEach(article => {
-    const cat = article.category || '其他'
+    const cat = article.category || t('blog.categoryOther')
     counts[cat] = (counts[cat] || 0) + 1
   })
 
   return [
-    { label: '全部', value: 'all', count: articles.value.length },
-    { label: '技術', value: '技術', count: counts['技術'] || 0 },
-    { label: '生活', value: '生活', count: counts['生活'] || 0 },
-    { label: 'Insight', value: 'Insight', count: counts['Insight'] || 0 },
-    { label: '專案', value: '專案', count: counts['專案'] || 0 }
+    { label: t('blog.all'), value: 'all', count: articles.value.length },
+    { label: t('blog.categoryTech'), value: '技術', count: counts['技術'] || 0 },
+    { label: t('blog.categoryLife'), value: '生活', count: counts['生活'] || 0 },
+    { label: t('blog.categoryInsight'), value: 'Insight', count: counts['Insight'] || 0 },
+    { label: t('blog.categoryProject'), value: '專案', count: counts['專案'] || 0 }
   ].filter(cat => cat.count > 0 || cat.value === 'all')
 })
 

@@ -7,7 +7,6 @@ export interface Project {
   github?: string
   demo?: string
   image?: string
-  featured: boolean
   highlights: string[]
   period?: string
   teamSize?: string
@@ -24,7 +23,6 @@ export const projects: Project[] = [
     github: '',
     demo: '',
     image: '',
-    featured: true,
     highlights: [
       '支援 15,000+ 個交易標的即時報價',
       '採用 Factory + Strategy 設計模式實現高擴展性',
@@ -45,7 +43,6 @@ export const projects: Project[] = [
     github: '',
     demo: 'https://www.spstaiwan.com.tw/%e5%85%85%e9%9b%bb%e7%ab%99%e7%87%9f%e9%81%8b%e7%ae%a1%e7%90%86%e7%b3%bb%e7%b5%b1/',
     image: '',
-    featured: true,
     highlights: [
       '管理超過 50 個充電樁，系統穩定運行',
       '平均 API 回應時間 < 200ms',
@@ -66,7 +63,6 @@ export const projects: Project[] = [
     github: '',
     demo: 'https://www.spstaiwan.com.tw/%e5%a4%aa%e9%99%bd%e5%85%89%e9%9b%bb%e7%b6%ad%e9%81%8b%e7%9b%a3%e6%8e%a7%e7%b3%bb%e7%b5%b1/',
     image: '',
-    featured: true,
     highlights: [
       '成功管理全台 268 MW 太陽光電裝置容量',
       '異常偵測準確率 > 95%，誤報率 < 5%',

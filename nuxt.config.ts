@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@vueuse/motion/nuxt',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/i18n'
   ],
 
   // TypeScript configuration
@@ -67,5 +68,37 @@ export default defineNuxtConfig({
 
   sitemap: {
     // sitemap options
+  },
+
+  // i18n configuration
+  i18n: {
+    locales: [
+      {
+        code: 'zh-TW',
+        iso: 'zh-TW',
+        name: '繁體中文',
+        file: 'zh-TW.ts'
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+        file: 'en.ts'
+      },
+      {
+        code: 'ja',
+        iso: 'ja-JP',
+        name: '日本語',
+        file: 'ja.ts'
+      }
+    ],
+    lazy: true,
+    defaultLocale: 'zh-TW',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
   }
 })

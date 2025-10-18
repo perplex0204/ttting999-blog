@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo / Brand -->
         <NuxtLink
-          to="/"
+          :to="localePath('/')"
           class="flex items-center space-x-2 text-xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
         >
           <span class="text-primary-600 dark:text-primary-400">&lt;</span>
@@ -13,7 +13,7 @@
         </NuxtLink>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center space-x-4">
           <NuxtLink
             v-for="link in navLinks"
             :key="link.path"
@@ -25,11 +25,14 @@
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 group-hover:w-full transition-all duration-300"></span>
           </NuxtLink>
 
+          <!-- Language Switcher -->
+          <LanguageSwitcher />
+
           <!-- Theme Toggle Button -->
           <button
             @click="toggleTheme"
             class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-            aria-label="切換主題"
+            :aria-label="$t('nav.toggleTheme')"
           >
             <ClientOnly>
               <!-- Sun Icon (Dark Mode) -->
@@ -70,7 +73,7 @@
         <button
           @click="toggleMobileMenu"
           class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-          aria-label="開啟選單"
+          :aria-label="$t('nav.toggleMenu')"
         >
           <svg
             class="w-6 h-6"
@@ -93,13 +96,15 @@
 
 <script setup lang="ts">
 const colorMode = useColorMode()
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 // Navigation links
-const navLinks = [
-  { path: '/resume', label: '履歷' },
-  { path: '/projects', label: '參與計畫' },
-  { path: '/blog', label: '文章' }
-]
+const navLinks = computed(() => [
+  { path: localePath('/resume'), label: t('nav.resume') },
+  { path: localePath('/projects'), label: t('nav.projects') },
+  { path: localePath('/blog'), label: t('nav.blog') }
+])
 
 // Theme toggle function
 const toggleTheme = () => {

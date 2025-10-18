@@ -7,7 +7,6 @@ export interface Project {
   github?: string
   demo?: string
   image?: string
-  featured?: boolean
   body?: any
   id?: string
 }

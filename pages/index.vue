@@ -43,10 +43,10 @@
             :enter="{ opacity: 1, scale: 1, transition: { delay: 600, duration: 600 } }"
           >
             <p class="text-2xl sm:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400">
-              Sr. Software Engineer
+              {{ $t('home.hero.title') }}
             </p>
             <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400">
-              Python • TypeScript • Vue.js • Cloud Architecture
+              {{ $t('home.hero.techStack') }}
             </p>
           </div>
 
@@ -101,10 +101,10 @@
             <div class="absolute top-0 left-0 text-8xl text-primary-200 dark:text-primary-900/30 font-serif">"</div>
             <blockquote class="text-center px-8 pt-12">
               <p class="text-2xl sm:text-3xl font-light text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
-                用心打造每一行程式碼
+                {{ $t('home.motto.quote') }}
               </p>
               <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 italic">
-                Crafting Every Line of Code with Heart
+                {{ $t('home.motto.quoteEn') }}
               </p>
             </blockquote>
           </div>
@@ -123,7 +123,7 @@
             :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
           >
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              About Me
+              {{ $t('home.about.title') }}
             </h2>
             <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
           </div>
@@ -134,14 +134,8 @@
             :initial="{ opacity: 0, y: 20 }"
             :visible-once="{ opacity: 1, y: 0, transition: { delay: 200, duration: 600 } }"
           >
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Sr. Software Engineer with a passion for building scalable web applications and cloud infrastructure.
-              Specialized in <strong>Python</strong>, <strong>TypeScript</strong>, and modern web frameworks like <strong>Vue.js</strong> and <strong>FastAPI</strong>.
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Experienced in optimizing system performance, implementing CI/CD pipelines, and architecting cloud-native solutions on <strong>GCP</strong>.
-              Passionate about clean code, design patterns, and building tools that make developers' lives easier.
-            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" v-html="$t('home.about.description1')"></p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" v-html="$t('home.about.description2')"></p>
           </div>
 
           <!-- Tech Stack Grid -->
@@ -176,7 +170,7 @@
             :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
           >
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Explore My Work
+              {{ $t('home.quickNav.title') }}
             </h2>
             <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
           </div>
@@ -211,7 +205,7 @@
                     {{ card.description }}
                   </p>
                   <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold">
-                    <span>Learn More</span>
+                    <span>{{ $t('home.quickNav.learnMore') }}</span>
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
@@ -229,17 +223,20 @@
 <script setup lang="ts">
 import { h } from 'vue'
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 // SEO Metadata
 useSeoMeta({
-  title: 'Ting Zhang - Sr. Software Engineer',
-  description: 'Personal portfolio of Ting Zhang, a Sr. Software Engineer specializing in Python, TypeScript, Vue.js, and cloud technologies. Experienced in building scalable web applications and optimizing system performance.',
-  ogTitle: 'Ting Zhang - Sr. Software Engineer',
-  ogDescription: 'Sr. Software Engineer specializing in Python, TypeScript, Vue.js, and cloud architecture. Building scalable solutions with passion.',
+  title: t('seo.home.title'),
+  description: t('seo.home.description'),
+  ogTitle: t('seo.home.title'),
+  ogDescription: t('seo.home.description'),
   ogImage: '/og-image.jpg',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Ting Zhang - Sr. Software Engineer',
-  twitterDescription: 'Sr. Software Engineer specializing in Python, TypeScript, Vue.js, and cloud architecture.'
+  twitterTitle: t('seo.home.title'),
+  twitterDescription: t('seo.home.description')
 })
 
 // Structured Data for SEO (Schema.org Person)
@@ -251,8 +248,8 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Ting Zhang',
-        jobTitle: 'Sr. Software Engineer',
-        description: 'Sr. Software Engineer specializing in Python, TypeScript, Vue.js, and cloud technologies',
+        jobTitle: t('home.hero.title'),
+        description: t('seo.home.description'),
         url: 'https://ttting999-blog.vercel.app',
         sameAs: [
           'https://github.com/perplex0204',
@@ -269,28 +266,28 @@ useHead({
 const email = 'tttingzhang999@gmail.com'
 
 // Tech Stack Data
-const techStacks = [
+const techStacks = computed(() => [
   {
     icon: '💻',
-    category: 'Frontend',
-    tech: 'Vue.js, TypeScript, Nuxt'
+    category: t('home.about.frontend'),
+    tech: t('home.about.frontendTech')
   },
   {
     icon: '⚙️',
-    category: 'Backend',
-    tech: 'Python, FastAPI, Flask'
+    category: t('home.about.backend'),
+    tech: t('home.about.backendTech')
   },
   {
     icon: '🗄️',
-    category: 'Database',
-    tech: 'MongoDB, PostgreSQL, Redis'
+    category: t('home.about.database'),
+    tech: t('home.about.databaseTech')
   },
   {
     icon: '☁️',
-    category: 'DevOps',
-    tech: 'GCP, Docker, Kubernetes'
+    category: t('home.about.devops'),
+    tech: t('home.about.devopsTech')
   }
-]
+])
 
 // SVG Icon Components
 const ResumeIcon = h('svg', {
@@ -374,29 +371,29 @@ const GitlabIcon = h('svg', {
 ])
 
 // Navigation Cards
-const navigationCards = [
+const navigationCards = computed(() => [
   {
-    title: 'Resume',
-    description: 'View my professional experience, and technical skills',
-    link: '/resume',
+    title: t('home.quickNav.resume.title'),
+    description: t('home.quickNav.resume.description'),
+    link: localePath('/resume'),
     icon: ResumeIcon,
     iconBg: 'bg-gradient-to-br from-blue-500 to-blue-600'
   },
   {
-    title: 'Projects',
-    description: 'Explore my portfolio of personal and professional projects',
-    link: '/projects',
+    title: t('home.quickNav.projects.title'),
+    description: t('home.quickNav.projects.description'),
+    link: localePath('/projects'),
     icon: ProjectIcon,
     iconBg: 'bg-gradient-to-br from-purple-500 to-purple-600'
   },
   {
-    title: 'Articles',
-    description: 'Read my articles on technology, insights, and life experiences',
-    link: '/blog',
+    title: t('home.quickNav.blog.title'),
+    description: t('home.quickNav.blog.description'),
+    link: localePath('/blog'),
     icon: BlogIcon,
     iconBg: 'bg-gradient-to-br from-pink-500 to-pink-600'
   }
-]
+])
 
 // Social Links
 const socialLinks = [

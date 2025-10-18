@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/blog/${article.path?.split('/').pop()}`"
+    :to="localePath(`/blog/${article.path?.split('/').pop()}`)"
     class="group block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
   >
     <!-- Article Image -->
@@ -89,6 +89,8 @@
 </template>
 
 <script setup lang="ts">
+const localePath = useLocalePath()
+
 interface Article {
   path?: string
   title: string

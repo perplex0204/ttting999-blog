@@ -1,6 +1,6 @@
 import type { Resume } from '~/types/resume'
 
-export const resumeData: Resume = {
+export const resumeDataEn: Resume = {
   personalInfo: {
     name: 'Ting Zhang',
     title: 'Sr. Software Engineer @ Going Cloud',
@@ -8,7 +8,7 @@ export const resumeData: Resume = {
     location: 'Taiwan',
     bio: 'Sr. Software Engineer with a passion for building scalable web applications and cloud infrastructure. Specialized in Python, TypeScript, and modern web frameworks. Experienced in optimizing system performance, implementing CI/CD pipelines, and architecting cloud-native solutions.',
     avatar: '/images/avatar.jpg',
-    motto: '用心打造每一行程式碼 | Crafting Every Line of Code with Heart'
+    motto: 'Crafting Every Line of Code with Heart | 用心打造每一行程式碼'
   },
 
   workExperience: [

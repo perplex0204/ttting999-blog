@@ -6,7 +6,6 @@ tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'WebSocket', 'Design Patt
 github: ''
 demo: ''
 image: ''
-featured: true
 ---
 
 ## 專案概述

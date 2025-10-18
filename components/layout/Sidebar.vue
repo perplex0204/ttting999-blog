@@ -17,11 +17,11 @@
       <div class="flex flex-col h-full">
         <!-- Sidebar Header -->
         <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
-          <span class="text-lg font-bold text-gray-900 dark:text-white">選單</span>
+          <span class="text-lg font-bold text-gray-900 dark:text-white">{{ $t('nav.menu') }}</span>
           <button
             @click="closeSidebar"
             class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-            aria-label="關閉選單"
+            :aria-label="$t('nav.closeMenu')"
           >
             <svg
               class="w-5 h-5"
@@ -53,13 +53,17 @@
           </NuxtLink>
         </nav>
 
-        <!-- Theme Toggle -->
-        <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+        <!-- Theme Toggle & Language Switcher -->
+        <div class="p-4 border-t border-gray-200 dark:border-gray-800 space-y-2">
+          <!-- Language Switcher -->
+          <LanguageSwitcher />
+
+          <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
             class="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
           >
-            <span class="font-medium">切換主題</span>
+            <span class="font-medium">{{ $t('nav.toggleTheme') }}</span>
             <!-- Sun Icon (Dark Mode) -->
             <svg
               v-if="colorMode.value === 'dark'"
@@ -102,43 +106,52 @@ import type { Component } from 'vue'
 
 const colorMode = useColorMode()
 const { isSidebarOpen, closeSidebar } = useSidebarState()
+const { t } = useI18n()
+const localePath = useLocalePath()
+
+// Icon components
+const ResumeIcon = defineComponent({
+  template: `
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    </svg>
+  `
+}) as Component
+
+const ProjectsIcon = defineComponent({
+  template: `
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+    </svg>
+  `
+}) as Component
+
+const BlogIcon = defineComponent({
+  template: `
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+    </svg>
+  `
+}) as Component
 
 // Navigation links with icons
-const navLinks = [
+const navLinks = computed(() => [
   {
-    path: '/resume',
-    label: '履歷',
-    icon: defineComponent({
-      template: `
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-      `
-    }) as Component
+    path: localePath('/resume'),
+    label: t('nav.resume'),
+    icon: ResumeIcon
   },
   {
-    path: '/projects',
-    label: '參與計畫',
-    icon: defineComponent({
-      template: `
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      `
-    }) as Component
+    path: localePath('/projects'),
+    label: t('nav.projects'),
+    icon: ProjectsIcon
   },
   {
-    path: '/blog',
-    label: '文章',
-    icon: defineComponent({
-      template: `
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-        </svg>
-      `
-    }) as Component
+    path: localePath('/blog'),
+    label: t('nav.blog'),
+    icon: BlogIcon
   }
-]
+])
 
 // Theme toggle function
 const toggleTheme = () => {

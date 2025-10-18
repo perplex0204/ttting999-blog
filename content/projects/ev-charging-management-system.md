@@ -6,7 +6,6 @@ tags: ['Vue.js', 'Python', 'Flask', 'MongoDB', 'GCP', 'IoT']
 github: ''
 demo: 'https://www.spstaiwan.com.tw/%e5%85%85%e9%9b%bb%e7%ab%99%e7%87%9f%e9%81%8b%e7%ae%a1%e7%90%86%e7%b3%bb%e7%b5%b1/'
 image: ''
-featured: true
 ---
 
 ## 專案概述
