@@ -13,9 +13,14 @@
           <div class="mb-8 flex justify-center">
             <div class="relative">
               <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 p-1 shadow-2xl">
-                <div class="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary-600 to-secondary-600">
-                  TZ
-                </div>
+                <NuxtImg
+                  src="/tuan_zmi.jpeg"
+                  alt="Ting Zhang's cats"
+                  class="w-full h-full rounded-full object-cover object-bottom-right"
+                  loading="eager"
+                  width="160"
+                  height="160"
+                />
               </div>
               <div class="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white dark:border-gray-900"></div>
             </div>

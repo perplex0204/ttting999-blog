@@ -242,11 +242,13 @@ const shareUrl = computed(() => {
 
 // Fetch related articles (same category or shared tags)
 const { data: relatedArticles } = await useAsyncData(`related-${slug}`, async () => {
-  const articles = await queryCollection('blog')
-    .where('path', '!=', `/blog/${slug}`) // Exclude current article
-    .andWhere('draft', '!=', true)
-    .limit(20)
+  // Fetch all non-draft articles
+  const allArticles = await queryCollection('blog')
+    .where('draft', '!=', true)
     .all()
+
+  // Filter out current article
+  const articles = allArticles.filter(a => a.path !== `/blog/${slug}`)
 
   // Score articles based on category match and tag overlap
   const scored = articles.map(a => {

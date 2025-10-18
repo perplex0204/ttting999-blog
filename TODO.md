@@ -136,39 +136,39 @@ Language: English(Professional Working Proficiency, TOEIC: 825), Mandarin(Native
 
 ## 阶段 6：UI/UX 优化与视觉设计
 
-- [ ] 6.1 设计并实现色彩系统（主色、辅色、深色模式配色）
-- [ ] 6.2 配置字体系统（Google Fonts: Inter + Noto Sans TC）
-- [ ] 6.3 创建可重用 UI 组件
-  - [ ] Button.vue
-  - [ ] Card.vue
-  - [ ] Badge.vue
-  - [ ] Tag.vue
-- [ ] 6.4 添加页面过渡动画
-- [ ] 6.5 添加 Loading 状态组件
-- [ ] 6.6 优化移动端体验
-- [ ] 6.7 添加骨架屏（Skeleton）加载效果
+- [x] 6.1 设计并实现色彩系统（主色、辅色、深色模式配色）
+- [x] 6.2 配置字体系统（Google Fonts: Inter + Noto Sans TC）
+- [x] 6.3 创建可重用 UI 组件
+  - [x] Button.vue
+  - [x] Card.vue
+  - [x] Badge.vue
+  - [x] Tag.vue
+- [x] 6.4 添加页面过渡动画
+- [x] 6.5 添加 Loading 状态组件
+- [x] 6.6 优化移动端体验
+- [x] 6.7 添加骨架屏（Skeleton）加载效果
 
 ## 阶段 7：内容准备与迁移
 
-- [ ] 7.1 准备个人照片和头像
-- [ ] 7.2 撰写个人简介和座右铭
-- [ ] 7.3 整理履历数据（工作经验、教育背景、技能）
-- [ ] 7.4 撰写至少 3 个项目经历的 Markdown 文章
-- [ ] 7.5 撰写至少 3 篇技术文章的 Markdown
-- [ ] 7.6 准备项目截图和封面图片
-- [ ] 7.7 优化所有图片资源（压缩、WebP 格式）
+- [x] 7.1 准备个人照片和头像
+- [x] 7.2 撰写个人简介和座右铭
+- [x] 7.3 整理履历数据（工作经验、教育背景、技能）
+- [x] 7.4 撰写至少 3 个项目经历的 Markdown 文章
+- [x] 7.5 撰写至少 3 篇技术文章的 Markdown
+- [x] 7.6 准备项目截图和封面图片
+- [x] 7.7 优化所有图片资源（压缩、WebP 格式）
 
-## 阶段 8：SEO 与性能优化
+## 阶段 8：SEO 与性能优化 ✅
 
-- [ ] 8.1 配置全站 SEO meta tags
-- [ ] 8.2 生成 sitemap.xml（使用 @nuxtjs/sitemap）
-- [ ] 8.3 配置 robots.txt
-- [ ] 8.4 添加结构化数据（Schema.org - Person）
-- [ ] 8.5 实现图片懒加载（Nuxt Image）
-- [ ] 8.6 配置 Open Graph 和 Twitter Cards
-- [ ] 8.7 优化 Web Vitals（LCP, FID, CLS）
-- [ ] 8.8 配置 preconnect 和 dns-prefetch
-- [ ] 8.9 实现代码分割和懒加载
+- [x] 8.1 配置全站 SEO meta tags
+- [x] 8.2 生成 sitemap.xml（使用 @nuxtjs/sitemap）
+- [x] 8.3 配置 robots.txt
+- [x] 8.4 添加结构化数据（Schema.org - Person, Article）
+- [x] 8.5 实现图片懒加载（Nuxt Image + loading属性）
+- [x] 8.6 配置 Open Graph 和 Twitter Cards
+- [x] 8.7 优化 Web Vitals（图片懒加载、字体优化）
+- [x] 8.8 配置 preconnect 和 dns-prefetch
+- [x] 8.9 实现代码分割和懒加载（Nuxt默认）
 
 ## 阶段 9：部署与 CI/CD ✅
 
