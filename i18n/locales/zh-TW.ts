@@ -112,13 +112,27 @@ export default {
   // Projects Page
   projects: {
     title: '專案作品',
+    pageTitle: '參與計畫',
     allProjects: '所有專案',
     filterByTech: '依技術篩選',
     all: '全部',
     viewProject: '查看專案',
     viewDemo: '查看展示',
     viewSource: '查看原始碼',
-    noProjects: '目前沒有專案'
+    viewCode: '查看程式碼',
+    link: '連結',
+    noProjects: '目前沒有專案',
+    close: '關閉',
+    technicalTags: '技術標籤',
+    projectHighlights: '專案亮點',
+    projectInfo: '專案資訊',
+    period: '期間',
+    team: '團隊',
+    role: '角色',
+    moreCount: '+{count} 更多',
+    comingSoon: '即將推出',
+    appStoreComingSoon: 'App Store（即將推出）',
+    googlePlayComingSoon: 'Google Play（即將推出）'
   },
 
   // Blog Page

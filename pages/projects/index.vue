@@ -4,7 +4,7 @@
       <!-- Page Header -->
       <div class="mb-12">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          參與計畫
+          {{ $t('projects.pageTitle') }}
         </h1>
       </div>
 
@@ -29,8 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import { projects } from '~/data/projects'
-import type { Project } from '~/data/projects'
+import type { Project } from '~/types/project'
+
+// Get projects data based on current locale
+const projects = useProjectsData()
+
+// i18n
+const { t } = useI18n()
 
 // Modal state management
 const selectedProject = ref<Project | null>(null)
@@ -44,12 +49,12 @@ const closeModal = () => {
   selectedProject.value = null
 }
 
-// SEO Meta tags
+// SEO Meta tags with i18n
 useSeoMeta({
-  title: '參與計畫 - Ting Zhang',
-  description: '展示我參與開發的專案作品，包括充電站營運管理系統、太陽光電維運監控系統、資產管理應用等全端開發項目。',
-  ogTitle: '參與計畫 - Ting Zhang',
-  ogDescription: '展示我參與開發的專案作品，包括充電站營運管理系統、太陽光電維運監控系統、資產管理應用等全端開發項目。',
+  title: t('seo.projects.title'),
+  description: t('seo.projects.description'),
+  ogTitle: t('seo.projects.title'),
+  ogDescription: t('seo.projects.description'),
   ogType: 'website'
 })
 </script>

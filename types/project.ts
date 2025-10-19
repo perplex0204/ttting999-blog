@@ -1,5 +1,5 @@
 export interface Project {
-  path: string
+  id: string
   title: string
   description: string
   date: string
@@ -10,8 +10,13 @@ export interface Project {
   images?: string[]
   appStore?: string
   googlePlay?: string
+  highlights: string[]
+  period?: string
+  teamSize?: string
+  role?: string
+  // Fields from Nuxt Content (when using markdown-based projects)
+  path?: string
   body?: any
-  id?: string
 }
 
 export interface ProjectTag {

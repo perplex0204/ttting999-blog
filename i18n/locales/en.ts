@@ -112,6 +112,7 @@ export default {
   // Projects Page
   projects: {
     title: 'Projects',
+    pageTitle: 'Projects',
     allProjects: 'All Projects',
     featured: 'Featured Projects',
     filterByTech: 'Filter by Tech',
@@ -119,7 +120,20 @@ export default {
     viewProject: 'View Project',
     viewDemo: 'View Demo',
     viewSource: 'View Source',
-    noProjects: 'No projects available'
+    viewCode: 'View Code',
+    link: 'Link',
+    noProjects: 'No projects available',
+    close: 'Close',
+    technicalTags: 'Technical Tags',
+    projectHighlights: 'Project Highlights',
+    projectInfo: 'Project Information',
+    period: 'Period',
+    team: 'Team',
+    role: 'Role',
+    moreCount: '+{count} more',
+    comingSoon: 'Coming Soon',
+    appStoreComingSoon: 'App Store (Coming Soon)',
+    googlePlayComingSoon: 'Google Play (Coming Soon)'
   },
 
   // Blog Page

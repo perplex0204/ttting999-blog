@@ -112,13 +112,27 @@ export default {
   // Projects Page
   projects: {
     title: 'プロジェクト',
+    pageTitle: 'プロジェクト',
     allProjects: '全プロジェクト',
     filterByTech: '技術でフィルター',
     all: '全て',
     viewProject: 'プロジェクトを見る',
     viewDemo: 'デモを見る',
     viewSource: 'ソースを見る',
-    noProjects: 'プロジェクトはありません'
+    viewCode: 'コードを見る',
+    link: 'リンク',
+    noProjects: 'プロジェクトはありません',
+    close: '閉じる',
+    technicalTags: '技術タグ',
+    projectHighlights: 'プロジェクトのハイライト',
+    projectInfo: 'プロジェクト情報',
+    period: '期間',
+    team: 'チーム',
+    role: '役割',
+    moreCount: '+{count} 件',
+    comingSoon: '近日公開',
+    appStoreComingSoon: 'App Store（近日公開）',
+    googlePlayComingSoon: 'Google Play（近日公開）'
   },
 
   // Blog Page
