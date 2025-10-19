@@ -32,9 +32,6 @@
                   <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {{ project.title }}
                   </h3>
-                  <span class="px-2.5 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-semibold rounded-full">
-                    Side Project
-                  </span>
                 </div>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">
                   {{ project.description }}

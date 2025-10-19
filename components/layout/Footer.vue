@@ -7,9 +7,6 @@
           <p class="text-sm text-gray-600 dark:text-gray-400">
             © {{ currentYear }} <span class="font-semibold text-gray-900 dark:text-white">Ting Zhang</span>
           </p>
-          <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-            {{ $t('footer.tagline') }}
-          </p>
         </div>
 
         <!-- Social Links -->

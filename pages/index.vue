@@ -22,17 +22,13 @@
                   height="160"
                 />
               </div>
-              <div class="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white dark:border-gray-900"></div>
             </div>
           </div>
 
           <!-- Name & Title -->
           <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4">
             <span class="inline-block" v-motion :initial="{ opacity: 0, x: -20 }" :enter="{ opacity: 1, x: 0, transition: { delay: 200, duration: 600 } }">
-              Ting
-            </span>
-            <span class="inline-block ml-4" v-motion :initial="{ opacity: 0, x: 20 }" :enter="{ opacity: 1, x: 0, transition: { delay: 400, duration: 600 } }">
-              Zhang
+              {{ $t('home.hero.name') }}
             </span>
           </h1>
 
@@ -42,9 +38,9 @@
             :initial="{ opacity: 0, scale: 0.9 }"
             :enter="{ opacity: 1, scale: 1, transition: { delay: 600, duration: 600 } }"
           >
-            <p class="text-2xl sm:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400">
+            <!-- <p class="text-2xl sm:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400">
               {{ $t('home.hero.title') }}
-            </p>
+            </p> -->
             <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400">
               {{ $t('home.hero.techStack') }}
             </p>
@@ -103,7 +99,7 @@
               <p class="text-2xl sm:text-3xl font-light text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
                 {{ $t('home.motto.quote') }}
               </p>
-              <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 italic">
+              <p v-if="$t('home.motto.quoteEn') !== $t('home.motto.quote')" class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 italic">
                 {{ $t('home.motto.quoteEn') }}
               </p>
             </blockquote>

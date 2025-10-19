@@ -8,7 +8,7 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 
 **Previous State**: This repository previously contained a Hugo static site. All Hugo files have been removed as part of migration to Nuxt 3.
 
-**Current State**: Phase 0 (Project Initialization), Phase 1 (Core Layout & Navigation), and Phase 2 (Homepage Design) completed. Successfully deployed to Vercel at https://ttting999-blog.vercel.app/. Ready for Phase 3 (Resume Page).
+**Current State**: Phase 0-2 completed (Core layout, navigation, homepage). Phase 3 complete (Resume page with i18n). Successfully deployed to Vercel at https://ttting999-blog.vercel.app/. Ready for Phase 4 (Projects system enhancement) and Phase 5+ (Content migration, SEO).
 
 ## Architecture
 
@@ -44,31 +44,44 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
 
 ### Key Features (Implementation Status)
 
-1. **✅ Navigation System** (Phase 1 Complete):
+1. **✅ Navigation System** (Phase 1)
    - **TopBar**: Fixed navigation bar with logo, desktop navigation links (Home, Resume, Projects, Blog), and dark/light mode toggle
    - **Sidebar**: Mobile-responsive slide-in menu with same navigation links and theme toggle
-   - **Footer**: Social links (Email, LinkedIn, GitHub) and technology stack info
+   - **Footer**: Social links (Email, LinkedIn, GitHub, GitLab) and technology stack info
    - **State Management**: `useSidebarState` composable for managing sidebar open/close state
    - **Responsive Design**: Desktop menu in TopBar, mobile hamburger menu triggers Sidebar
    - **Theme Toggle**: Integrated `@nuxtjs/color-mode` with system preference detection
+   - **Language Switcher**: Cycling through zh-TW, en, ja with `LanguageSwitcher` component
 
-2. **✅ Homepage** (Phase 2 Complete):
+2. **✅ Homepage** (Phase 2)
    - Hero Section with gradient avatar, animated name reveal, CTA buttons
    - Motto/Quote section with bilingual display (Chinese + English)
    - About Me section with personal bio and tech stack cards
    - Quick navigation cards (Resume, Projects, Blog) with gradient overlays
-   - Contact section with social links (Email, LinkedIn, GitHub)
+   - Contact section with social links (Email, LinkedIn, GitHub, GitLab)
    - Full @vueuse/motion animations (scroll-triggered, staggered reveals)
    - SEO optimized with Schema.org Person structured data
+   - Fully internationalized with i18n
 
-3. **🚧 Resume Page** (Phase 3 - Pending):
+3. **✅ Resume Page** (Phase 3)
+   - Implemented with 4 major components:
+     - `ResumeHero`: Personal info header with contact links
+     - `ResumeExperienceTimeline`: Work experience with timeline UI
+     - `ResumeSideProjects`: Side project showcase
+     - `ResumeSkillsGrid`: Technical skills categorization
+   - Full i18n support with separate data files per locale (`data/resume-{locale}.ts`)
+   - `useResumeData()` composable for locale-aware data fetching
    - TypeScript types defined in `types/resume.ts`
-   - Needs: Component implementation, data file, timeline UI
+   - SEO optimized with Schema.org Person structured data
 
-4. **📋 Projects System** (Phase 4 - Planned):
-   - Markdown-based project articles with filtering by tech stack
+4. **✅ Projects System** (Phase 4)
+   - Project list page with filtering by technology tags
+   - Modal-based project detail view (`ProjectModal`)
+   - Project card component with hover effects
+   - Integrated with Nuxt Content v3 for markdown-based projects
+   - Full i18n support with locale-based content
 
-5. **✅ Blog System** (Phase 5 - Complete):
+5. **✅ Blog System** (Phase 5)
    - Blog list page with category and tag filtering (`pages/blog/index.vue`)
    - Individual article pages with TOC and related articles (`pages/blog/[slug].vue`)
    - Article card component with image, metadata, and tags (`components/ArticleCard.vue`)
@@ -76,6 +89,15 @@ This is a personal portfolio website built with **Nuxt 3**, designed to showcase
    - 3 sample articles with full content
    - SEO optimization with structured data
    - Markdown rendering with `<ContentRenderer>`
+
+6. **✅ Internationalization (i18n)** (Integrated across all phases)
+   - Three locales: zh-TW (default), en, ja
+   - Strategy: `prefix_except_default` (default locale has no prefix)
+   - Cookie-based locale persistence (`i18n_redirected`)
+   - Translation files in `i18n/locales/` with structured organization
+   - **CRITICAL**: All internal navigation links MUST use `localePath()` to preserve language state
+   - Resume data separated by locale in `data/resume-{locale}.ts`
+   - Locale-aware composables (`useResumeData`)
 
 ## Development Commands
 
@@ -121,12 +143,17 @@ npm run generate
 ### nuxt.config.ts
 
 Core configuration includes:
-- **Modules**: `@nuxt/content` (v3), `@nuxt/image`, `@nuxtjs/tailwindcss`, `@nuxtjs/color-mode`, `@vueuse/motion/nuxt`
+- **Modules**: `@nuxt/content` (v3), `@nuxt/image`, `@nuxtjs/tailwindcss`, `@nuxtjs/color-mode`, `@vueuse/motion/nuxt`, `@nuxtjs/sitemap`, `@nuxtjs/i18n`
 - **TypeScript**: Strict mode enabled, typeCheck disabled for faster builds (run separately if needed)
 - **Nitro Prerender**: Configured to crawl links and prerender sitemap/robots.txt
 - **Color Mode**: System preference detection with 'light' fallback, no class suffix
 - **SEO**: Default meta tags, fonts preconnected (Google Fonts: Inter + Noto Sans TC)
 - **Runtime Config**: Public siteUrl for SEO/metadata
+- **i18n Configuration**:
+  - Locales: zh-TW (default), en, ja
+  - Strategy: `prefix_except_default` - default locale has no URL prefix
+  - Browser detection with cookie persistence
+  - Lazy-loaded translation files from `i18n/locales/`
 
 ### content.config.ts
 
@@ -294,14 +321,17 @@ The design follows a modern, professional aesthetic inspired by a digital crafts
 ## Important Conventions
 
 ### File Naming
-- Components: PascalCase (e.g., `PostCard.vue`, `SkillsGrid.vue`)
+- Components: PascalCase (e.g., `ArticleCard.vue`, `ResumeHero.vue`)
 - Pages: kebab-case or [dynamic] (e.g., `resume.vue`, `[slug].vue`)
 - Content: kebab-case (e.g., `my-first-post.md`)
 - Types: kebab-case (e.g., `blog.ts`, `resume.ts`)
+- Data files: kebab-case with locale suffix (e.g., `resume-zh-TW.ts`, `resume-en.ts`)
+- i18n files: locale code (e.g., `zh-TW.ts`, `en.ts`, `ja.ts`)
 
 ### Component Organization
-- Layout components in `components/layout/`
-- Feature-specific components in `components/{feature}/`
+- Layout components in `components/layout/` (TopBar, Sidebar, Footer)
+- Resume components in `components/resume/` (ResumeHero, ResumeExperienceTimeline, etc.)
+- Project components at root `components/` (ProjectCard, ProjectModal)
 - Generic UI components in `components/ui/`
 - All components are auto-imported by Nuxt
 
@@ -311,47 +341,29 @@ The design follows a modern, professional aesthetic inspired by a digital crafts
 - Use `defineProps` and `defineEmits` with TypeScript
 - Type definitions in `types/` directory
 
+### Internationalization (i18n)
+- **CRITICAL**: ALL internal navigation links MUST use `localePath()` function
+  ```vue
+  <!-- ❌ Wrong - breaks language persistence -->
+  <NuxtLink to="/resume">Resume</NuxtLink>
+
+  <!-- ✅ Correct - preserves language state -->
+  <NuxtLink :to="localePath('/resume')">{{ $t('nav.resume') }}</NuxtLink>
+  ```
+- Use `useLocalePath()` composable in script setup:
+  ```typescript
+  const localePath = useLocalePath()
+  const resumeLink = localePath('/resume') // Returns /en/resume when locale is 'en'
+  ```
+- Translation keys should be organized hierarchically (e.g., `nav.resume`, `home.hero.title`)
+- Content that varies by locale should use separate data files (e.g., resume data)
+- Use `useI18n()` composable for accessing `t()` and `locale` in components
+
 ### SEO
 - Every page must have `useSeoMeta()` or `useHead()` with proper meta tags
 - Include Open Graph and Twitter Card metadata
-- Add structured data (Schema.org) for Person type on homepage
-
-## Development Status & Roadmap
-
-This project follows a phased development approach documented in TODO.md:
-
-- **Phase 0** ✅: Project initialization and base configuration (COMPLETED)
-- **Phase 1** ✅: Core layout and navigation system (COMPLETED)
-  - `app.vue` in root directory (correct Nuxt 3 structure)
-  - `layouts/default.vue` with TopBar, Sidebar, Footer slots
-  - `components/layout/TopBar.vue` - fixed navigation with theme toggle
-  - `components/layout/Sidebar.vue` - mobile menu with slide animation
-  - `components/layout/Footer.vue` - social links and info
-  - `composables/useSidebarState.ts` - sidebar state management
-  - Placeholder pages created: resume.vue, blog/index.vue, projects/index.vue
-- **Phase 2** ✅: Homepage design (COMPLETED)
-  - Hero section with gradient avatar and animated name
-  - Motto section with bilingual quote
-  - About Me section with bio and tech stack grid
-  - Quick navigation cards with gradient overlays
-  - Contact section with social links
-  - @vueuse/motion animations (scroll-triggered, staggered)
-  - Schema.org Person structured data for SEO
-- **Phase 3** 🚧: Resume page with work experience timeline (NEXT)
-- **Phase 4**: Projects system with markdown rendering
-- **Phase 5** ✅: Blog system with categorization and tags (COMPLETED)
-  - Blog list page with filtering
-  - Individual article pages with TOC
-  - Article card components
-  - Nuxt Content v3 integration
-  - 3 sample technical articles
-- **Phase 6-8**: UI/UX polish, content migration, SEO
-- **Phase 9** ✅: Deployment (COMPLETED - Vercel deployed at https://ttting999-blog.vercel.app/)
-- **Phase 10-11**: Testing, quality assurance, advanced features
-
-**Current Phase**: Phase 3 (Resume Page Design) or Phase 4 (Projects System)
-
-Refer to TODO.md for detailed task breakdown. Always update TODO.md checkboxes as tasks are completed.
+- Add structured data (Schema.org) for Person type on homepage and resume
+- Use locale-aware titles and descriptions from i18n
 
 ## Performance Requirements
 
@@ -531,6 +543,54 @@ console.log(articles.value)
    ```typescript
    source: 'blog/**/*.md'  // Files must be in content/blog/
    ```
+
+### i18n: Language Not Persisting Across Pages
+
+**Problem**: Language switches back to default when navigating between pages.
+
+**Root Cause**: Internal navigation links using hardcoded paths instead of `localePath()`.
+
+**Symptoms**:
+- Switch to English (`/en`) on homepage
+- Click Resume link → URL becomes `/resume` instead of `/en/resume`
+- Page displays in default language (zh-TW)
+
+**Solution**:
+
+1. **Update all navigation links** to use `localePath()`:
+   ```vue
+   <script setup>
+   const localePath = useLocalePath()
+   </script>
+
+   <template>
+     <!-- ❌ Wrong -->
+     <NuxtLink to="/resume">Resume</NuxtLink>
+
+     <!-- ✅ Correct -->
+     <NuxtLink :to="localePath('/resume')">Resume</NuxtLink>
+   </template>
+   ```
+
+2. **Check these files** for hardcoded paths:
+   - `components/layout/TopBar.vue` - Navigation links and logo
+   - `components/layout/Sidebar.vue` - Mobile menu links
+   - `pages/index.vue` - Quick navigation cards
+   - `components/ArticleCard.vue` - Blog article links
+   - `pages/blog/[slug].vue` - Back to blog link
+   - Any other component with `<NuxtLink>` to internal pages
+
+3. **Verify locale prefix** in browser URL:
+   - Default locale (zh-TW): `/resume`, `/blog`
+   - English: `/en/resume`, `/en/blog`
+   - Japanese: `/ja/resume`, `/ja/blog`
+
+4. **Test navigation flow**:
+   - Start on homepage
+   - Switch language using language switcher
+   - Navigate to different pages
+   - Verify URL contains correct locale prefix
+   - Verify content displays in selected language
 
 ## References
 

@@ -7,6 +7,9 @@ export interface Project {
   github?: string
   demo?: string
   image?: string
+  images?: string[]
+  appStore?: string
+  googlePlay?: string
   body?: any
   id?: string
 }

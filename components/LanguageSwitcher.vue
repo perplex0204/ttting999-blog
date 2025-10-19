@@ -40,7 +40,8 @@
 </template>
 
 <script setup lang="ts">
-const { locale, setLocale } = useI18n()
+const { locale } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
 
 // Language cycle order: zh-TW -> en -> ja -> zh-TW
 const languageCycle = ['zh-TW', 'en', 'ja']
@@ -63,6 +64,8 @@ const cycleLanguage = async () => {
   const nextIndex = (currentIndex + 1) % languageCycle.length
   const nextLocale = languageCycle[nextIndex]
 
-  await setLocale(nextLocale)
+  // Navigate to the same page in the new locale
+  // This triggers Nuxt's page transition, ensuring smooth fade-out/fade-in animation
+  await navigateTo(switchLocalePath(nextLocale))
 }
 </script>

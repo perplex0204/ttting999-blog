@@ -60,7 +60,7 @@
 
           <!-- Theme Toggle -->
           <button
-            @click="toggleTheme"
+            @click="toggleTheme($event)"
             class="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
           >
             <span class="font-medium">{{ $t('nav.toggleTheme') }}</span>
@@ -109,6 +109,9 @@ const { isSidebarOpen, closeSidebar } = useSidebarState()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
+// Theme transition composable
+const { toggleThemeWithTransition } = useThemeTransition()
+
 // Icon components
 const ResumeIcon = defineComponent({
   template: `
@@ -153,9 +156,9 @@ const navLinks = computed(() => [
   }
 ])
 
-// Theme toggle function
-const toggleTheme = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+// Theme toggle function with circular reveal animation
+const toggleTheme = (event: MouseEvent) => {
+  toggleThemeWithTransition(event, colorMode)
 }
 </script>
 

@@ -28,7 +28,6 @@
                     height="160"
                   />
                 </div>
-                <div class="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white dark:border-gray-800"></div>
               </div>
             </div>
 

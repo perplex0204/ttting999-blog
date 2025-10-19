@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Ting Zhang - Full Stack Engineer',
+      title: 'tingzhang999-blog',
       meta: [
         { name: 'description', content: 'Personal portfolio and technical blog of Ting Zhang, a Full Stack Engineer specializing in Python, TypeScript, Vue.js, and cloud technologies.' },
         { name: 'format-detection', content: 'telephone=no' }

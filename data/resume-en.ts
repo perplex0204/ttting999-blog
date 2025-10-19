@@ -3,21 +3,30 @@ import type { Resume } from '~/types/resume'
 export const resumeDataEn: Resume = {
   personalInfo: {
     name: 'Ting Zhang',
-    title: 'Sr. Software Engineer @ Going Cloud',
+    title: 'Sr. Full Stack Engineer @ Going Cloud',
     email: 'tttingzhang999@gmail.com',
     location: 'Taiwan',
-    bio: 'Sr. Software Engineer with a passion for building scalable web applications and cloud infrastructure. Specialized in Python, TypeScript, and modern web frameworks. Experienced in optimizing system performance, implementing CI/CD pipelines, and architecting cloud-native solutions.',
+    bio: 'Software Engineer with a passion for building scalable web applications and cloud infrastructure. Specialized in Python, TypeScript, and modern web frameworks. Experienced in optimizing system performance, implementing CI/CD pipelines, and architecting cloud-native solutions.',
     avatar: '/images/avatar.jpg',
-    motto: 'Crafting Every Line of Code with Heart | 用心打造每一行程式碼'
+    motto: 'Work hard, play hard | 努力工作，享受生活'
   },
 
   workExperience: [
     {
+      title: 'Sr. Full Stack Engineer',
+      company: 'Going Cloud',
+      period: '2025/11 - present',
+      startDate: '2025-11',
+      endDate: 'present',
+      description: [],
+      technologies: ['AWS', 'Kubernetes']
+    },
+    {
       title: 'Sr. Software Engineer',
       company: 'Smart Power System',
-      period: '2025/6 - present',
+      period: '2025/6 - 2025/11',
       startDate: '2025-06',
-      endDate: 'present',
+      endDate: '2025-11',
       description: [
         'Implement External Secret + Secret Manager to replace original environment variable deployment methods, improving manageability and security.',
         'Integrate unit tests and end-to-end tests into CI/CD pipelines, achieving 75% test coverage to enhance product stability.',

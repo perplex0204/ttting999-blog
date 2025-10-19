@@ -16,7 +16,7 @@ export default {
   footer: {
     builtWith: 'Built with',
     allRightsReserved: 'All rights reserved',
-    tagline: 'Full Stack Engineer | Crafting code with care',
+    tagline: 'Full Stack Engineer | Work hard, play hard',
     tech: 'Built with {nuxt} + {tailwind} | Deployed on {vercel}'
   },
 
@@ -32,12 +32,12 @@ export default {
     },
     motto: {
       title: 'Motto',
-      quote: 'Crafting Every Line of Code with Heart',
-      quoteEn: 'Crafting Every Line of Code with Heart'
+      quote: 'Work hard, play hard',
+      quoteEn: 'Work hard, play hard'
     },
     about: {
       title: 'About Me',
-      description1: 'Sr. Software Engineer with a passion for building scalable web applications and cloud infrastructure. Specialized in Python, TypeScript, and modern web frameworks like Vue.js and FastAPI.',
+      description1: 'Software Engineer with a passion for building scalable web applications and cloud infrastructure. Specialized in Python, TypeScript, and modern web frameworks like Vue.js and FastAPI.',
       description2: 'Experienced in optimizing system performance, implementing CI/CD pipelines, and architecting cloud-native solutions on GCP. Passionate about clean code, design patterns, and building tools that make developers\' lives easier.',
       techStack: 'Tech Stack',
       frontend: 'Frontend',
@@ -169,7 +169,7 @@ export default {
   // SEO
   seo: {
     home: {
-      title: 'Ting Zhang - Full Stack Engineer',
+      title: 'tingzhang999-blog',
       description: 'Personal portfolio and technical blog of Ting Zhang, a Full Stack Engineer specializing in Python, TypeScript, Vue.js, and cloud technologies.'
     },
     resume: {

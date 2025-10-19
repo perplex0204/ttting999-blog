@@ -16,7 +16,7 @@ export default {
   footer: {
     builtWith: '使用以下技術建構',
     allRightsReserved: '版權所有',
-    tagline: 'Full Stack Engineer | 用心打造每一行程式碼',
+    tagline: 'Full Stack Engineer | 努力工作，享受生活',
     tech: 'Built with {nuxt} + {tailwind} | Deployed on {vercel}'
   },
 
@@ -24,7 +24,7 @@ export default {
   home: {
     hero: {
       greeting: '嗨，我是',
-      name: 'Ting Zhang',
+      name: '張碩庭',
       title: '資深軟體工程師',
       techStack: 'Python • TypeScript • Vue.js • 雲端架構',
       viewResume: '查看履歷',
@@ -32,8 +32,8 @@ export default {
     },
     motto: {
       title: '座右銘',
-      quote: '用心打造每一行程式碼',
-      quoteEn: 'Crafting Every Line of Code with Heart'
+      quote: '努力工作，享受生活',
+      quoteEn: 'Work hard, play hard'
     },
     about: {
       title: 'About Me',
@@ -168,20 +168,20 @@ export default {
   // SEO
   seo: {
     home: {
-      title: 'Ting Zhang - 全端工程師',
-      description: 'Ting Zhang 的個人作品集與技術部落格，專注於 Python、TypeScript、Vue.js 和雲端技術的全端工程師。'
+      title: '張碩庭的個人作品集與技術部落格 | tingzhang999-blog | ttting999' ,
+      description: '張碩庭的個人作品集與技術部落格，專注於 Python、TypeScript、Vue.js 和雲端技術的全端工程師。'
     },
     resume: {
-      title: '履歷 | Ting Zhang',
-      description: '查看 Ting Zhang 的完整履歷，包括工作經歷、教育背景和技術技能。'
+      title: '履歴 | 張碩庭 | tingzhang999-blog | ttting999',
+      description: '查看張碩庭的完整履歷，包括工作經歷、教育背景和技術技能。'
     },
     projects: {
-      title: '專案作品 | Ting Zhang',
-      description: '探索 Ting Zhang 參與過的專案和技術作品。'
+      title: '專案作品 | 張碩庭 | tingzhang999-blog | ttting999',
+      description: '探索張碩庭參與過的專案和技術作品。'
     },
     blog: {
-      title: '技術部落格 | Ting Zhang',
-      description: '閱讀 Ting Zhang 的技術文章、學習筆記和開發心得。'
+      title: '技術部落格 | 張碩庭 | tingzhang999-blog | ttting999',
+      description: '閱讀張碩庭的技術文章、學習筆記和開發心得。'
     }
   }
 }

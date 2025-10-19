@@ -8,7 +8,7 @@
           class="flex items-center space-x-2 text-xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
         >
           <span class="text-primary-600 dark:text-primary-400">&lt;</span>
-          <span>Ting Zhang</span>
+          <span>ttting999</span>
           <span class="text-primary-600 dark:text-primary-400">/&gt;</span>
         </NuxtLink>
 
@@ -30,7 +30,7 @@
 
           <!-- Theme Toggle Button -->
           <button
-            @click="toggleTheme"
+            @click="toggleTheme($event)"
             class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
             :aria-label="$t('nav.toggleTheme')"
           >
@@ -106,9 +106,12 @@ const navLinks = computed(() => [
   { path: localePath('/blog'), label: t('nav.blog') }
 ])
 
-// Theme toggle function
-const toggleTheme = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+// Theme transition composable
+const { toggleThemeWithTransition } = useThemeTransition()
+
+// Theme toggle function with circular reveal animation
+const toggleTheme = (event: MouseEvent) => {
+  toggleThemeWithTransition(event, colorMode)
 }
 
 // Mobile menu state (will be handled by Sidebar component)

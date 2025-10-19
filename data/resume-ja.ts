@@ -3,7 +3,7 @@ import type { Resume } from '~/types/resume'
 export const resumeDataJa: Resume = {
   personalInfo: {
     name: 'Ting Zhang',
-    title: 'シニアソフトウェアエンジニア @ Going Cloud',
+    title: 'シニアフルスタックエンジニア @ Going Cloud',
     email: 'tttingzhang999@gmail.com',
     location: '台湾',
     bio: 'スケーラブルなWebアプリケーションとクラウドインフラストラクチャの構築に情熱を注ぐシニアソフトウェアエンジニアです。Python、TypeScript、最新Webフレームワークを専門としています。システムパフォーマンスの最適化、CI/CDパイプラインの実装、GCP上でのクラウドネイティブソリューションの設計において豊富な経験があります。',
@@ -13,11 +13,20 @@ export const resumeDataJa: Resume = {
 
   workExperience: [
     {
+      title: 'シニアフルスタックエンジニア',
+      company: 'Going Cloud',
+      period: '2025/11 - 現在',
+      startDate: '2025-11',
+      endDate: 'present',
+      description: [],
+      technologies: ['AWS', 'Kubernetes']
+    },
+    {
       title: 'シニアソフトウェアエンジニア',
       company: 'Smart Power System',
-      period: '2025/6 - 現在',
+      period: '2025/6 - 2025/11',
       startDate: '2025-06',
-      endDate: 'present',
+      endDate: '2025-11',
       description: [
         'External Secret + Secret Managerを実装し、従来の環境変数デプロイ方法を置き換えることで、管理性とセキュリティを向上させました。',
         '単体テストとエンドツーエンドテストをCI/CDパイプラインに統合し、75%のテストカバレッジを達成して製品の安定性を向上させました。',

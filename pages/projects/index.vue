@@ -6,9 +6,6 @@
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
           參與計畫
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400">
-          我相信好的產品源自於對細節的堅持。
-        </p>
       </div>
 
       <!-- Projects Grid -->

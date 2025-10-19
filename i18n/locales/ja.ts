@@ -16,7 +16,7 @@ export default {
   footer: {
     builtWith: '使用技術',
     allRightsReserved: '全著作権所有',
-    tagline: 'フルスタックエンジニア | コードを丁寧に作成',
+    tagline: 'フルスタックエンジニア | 努力して、楽しむ',
     tech: '{nuxt} + {tailwind} で構築 | {vercel} にデプロイ'
   },
 
@@ -32,8 +32,8 @@ export default {
     },
     motto: {
       title: '座右の銘',
-      quote: '心を込めて一行一行のコードを作成',
-      quoteEn: 'Crafting Every Line of Code with Heart'
+      quote: '努力して、楽しむ',
+      quoteEn: 'Work hard, play hard'
     },
     about: {
       title: 'About Me',
@@ -168,7 +168,7 @@ export default {
   // SEO
   seo: {
     home: {
-      title: 'Ting Zhang - フルスタックエンジニア',
+      title: 'tingzhang999-blog',
       description: 'Python、TypeScript、Vue.js、クラウド技術を専門とするフルスタックエンジニア、Ting Zhangの個人ポートフォリオと技術ブログ。'
     },
     resume: {
