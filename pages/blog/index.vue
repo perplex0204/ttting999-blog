@@ -161,10 +161,9 @@ const categories = computed(() => {
 
   return [
     { label: t('blog.all'), value: 'all', count: articles.value.length },
+    { label: t('blog.category心得'), value: '心得', count: counts['心得'] || 0 },
     { label: t('blog.categoryTech'), value: '技術', count: counts['技術'] || 0 },
-    { label: t('blog.categoryLife'), value: '生活', count: counts['生活'] || 0 },
-    { label: t('blog.categoryInsight'), value: 'Insight', count: counts['Insight'] || 0 },
-    { label: t('blog.categoryProject'), value: '專案', count: counts['專案'] || 0 }
+    { label: t('blog.categoryLife'), value: '生活', count: counts['生活'] || 0 }
   ].filter(cat => cat.count > 0 || cat.value === 'all')
 })
 
